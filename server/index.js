@@ -1,4 +1,3 @@
-// const express = require("express");
 const server = require("./src/config/server.js");
 const { conn } = require("./src/config/db.js");
 const PORT = process.env.PORT || 5000;
@@ -6,7 +5,7 @@ const PORT = process.env.PORT || 5000;
 // starting server:
 (async function () {
   try {
-    await conn.sync({ force: true });
+    await conn.sync({ force: false });
     await server.listen(PORT, () => {
       console.log(`Server listening at port: ${PORT}`);
     });
