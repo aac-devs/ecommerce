@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
             msg: "[Category]: category name cannot be null.",
           },
           len: {
-            args: [2, 30],
+            args: [3, 30],
             msg:
               "[Category]: category name must contain between 3 and 30 characters",
           },

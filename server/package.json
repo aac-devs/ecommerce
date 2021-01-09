@@ -4,7 +4,8 @@
   "description": "server for the ecommerce website",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "seed": "nodemon seed.js"
   },
   "author": "Andrés Arana Castillo",
   "license": "MIT",
