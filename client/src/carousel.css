@@ -1,0 +1,81 @@
+:root {
+  --size-image: 200px;
+  --left-position: 10px;
+  --center-image: 10px;
+  --top-image: 10px;
+  --start-image: calc(var(--center-image) - var(--size-image));
+  --end-image: calc(var(--center-image) + var(--size-image));
+}
+
+.main-carousel {
+  height: 100%;
+  width: 100%;
+  background-color: lime;
+  /* position: relative; */
+}
+
+.container {
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* display: inline; */
+  min-height: 220px;
+  min-width: 220px;
+  height: 270px;
+  width: 220px;
+  position: relative;
+  background-color: yellow;
+  z-index: 1;
+  top: 50px;
+  left: 250px;
+  overflow-x: hidden;
+}
+
+.ventana {
+  /* background-color: wheat; */
+  width: var(--size-image);
+  height: var(--size-image);
+  outline: 1rem solid black;
+  position: absolute;
+  top: var(--top-image);
+  left: var(--center-image);
+  z-index: 10;
+}
+
+.lista-imagenes {
+  /* display: inline; */
+  position: absolute;
+  background-color: paleturquoise;
+  width: var(--size-image);
+  height: var(--size-image);
+  border: 1px solid black;
+  top: var(--top-image);
+  /* left: var(--left-position); */
+  transition: left 0.5s;
+  z-index: 0;
+}
+
+.image-start {
+  left: var(--end-image);
+}
+
+.image-center {
+  left: var(--center-image);
+}
+
+.image-end {
+  left: var(--start-image);
+}
+
+.button {
+  position: relative;
+  top: 250px;
+  left: 50px;
+  background-color: red;
+  text-transform: uppercase;
+}
+
+.button:active {
+  background-color: lime;
+}
