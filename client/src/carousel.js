@@ -1,29 +1,48 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Carousel = ({ data }) => {
-  const [leftPos, setLeftPos] = useState(10);
+const Carousel = ({ data, size }) => {
   console.log("Estoy en carousel");
   console.log(data);
 
-  let size = -200;
-
-  const array = data.map((item) => item.url);
-
-  const arrayDivs = data.map((item, index) =>
-    index === 0 ? (
-      <div className="lista-imagenes" key={index}>
-        imagen {index}
-      </div>
-    ) : (
-      <div className="lista-imagenes" key={index}>
-        imagen {index}
-      </div>
-    )
+  // Carousel size:
+  const carousel_height = size + 20;
+  const carousel_width = size + 120;
+  document.documentElement.style.setProperty(
+    "--width-carrousel",
+    `${carousel_width}px`
+  );
+  document.documentElement.style.setProperty(
+    "--height-carrousel",
+    `${carousel_height}px`
   );
 
-  // const arrayClases = data.map((item, index) =>
-  //   index === 0 ? "lista-imagenes image-center" : "lista-imagenes image-start"
-  // );
+  // Window size:
+  const window_height = size;
+  const window_width = size + 40;
+  document.documentElement.style.setProperty(
+    "--width-window",
+    `${window_width}px`
+  );
+  document.documentElement.style.setProperty(
+    "--height-window",
+    `${window_height}px`
+  );
+
+  // Window position:
+  const window_top_position = 0;
+  const window_left_position = 0;
+  document.documentElement.style.setProperty(
+    "--window-top-position",
+    `${window_top_position}px`
+  );
+  document.documentElement.style.setProperty(
+    "--window-left-position",
+    `${window_left_position}px`
+  );
+
+  // Image size:
+  document.documentElement.style.setProperty("--image-size", `${size}px`);
+
   //document.getElementById('image-item-0').style.setProperty('color', 'blue')
   //document.getElementById('image-item-0').style.getPropertyValue('color')
   const handleLeft = (e) => {
@@ -34,7 +53,7 @@ const Carousel = ({ data }) => {
         .getElementById(`image-item-${index}`)
         .style.getPropertyValue("left");
 
-      const res = parseInt(value.replace("px", "")) - 200;
+      const res = parseInt(value.replace("px", "")) - size;
       document
         .getElementById(`image-item-${index}`)
         .style.setProperty("left", `${res}px`);
@@ -50,7 +69,7 @@ const Carousel = ({ data }) => {
         .getElementById(`image-item-${index}`)
         .style.getPropertyValue("left");
 
-      const res = parseInt(value.replace("px", "")) + 200;
+      const res = parseInt(value.replace("px", "")) + size;
 
       // if (res !== 10) {
       //   document
@@ -73,8 +92,8 @@ const Carousel = ({ data }) => {
 
   return (
     <div className="main-carousel">
-      <div className="container">
-        <div className="ventana"></div>
+      <div className="carousel">
+        <div className="carousel__window"></div>
         {/* {arrayDivs.map((item) => item)} */}
         {data.map((item, index) => {
           const leftValue = getComputedStyle(
@@ -83,13 +102,13 @@ const Carousel = ({ data }) => {
           const res = parseInt(leftValue.replace("px", ""));
           document.documentElement.style.setProperty(
             "--left-position",
-            `${res + 200}px`
+            `${res + size}px`
           );
           return (
             <div
               key={index}
               id={`image-item-${index}`}
-              className={`lista-imagenes`}
+              className={`carousel__images`}
               style={{ left: `${leftValue}` }}
             >
               imagen {index}
@@ -97,12 +116,24 @@ const Carousel = ({ data }) => {
           );
         })}
 
-        <button className="button button-left" onClick={handleLeft}>
-          left
-        </button>
-        <button className="button button-right" onClick={handleRight}>
-          right
-        </button>
+        <div
+          className="button button-left"
+          onClick={handleLeft}
+          style={{
+            top: `${Math.round(size / 2) - 5}px`,
+            left: `${-10}px`,
+            backgroundColor: "blue",
+          }}
+        ></div>
+        <div
+          className="button button-right"
+          onClick={handleRight}
+          style={{
+            top: `${Math.round(size / 2) - 5}px`,
+            left: `${size}px`,
+            backgroundColor: "cyan",
+          }}
+        ></div>
       </div>
     </div>
   );

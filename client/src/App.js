@@ -40,7 +40,9 @@ function App() {
     <div className="grid-container">
       <header>mi header</header>
       <main>
-        {allowRender ? <Carousel data={products.list.data[5].images} /> : null}
+        {allowRender ? (
+          <Carousel data={products.list.data[5].images} size={300} />
+        ) : null}
       </main>
       {/* <main>{allowRender ? <Catalogue /> : null}</main> */}
       <footer></footer>
