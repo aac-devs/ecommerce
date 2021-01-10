@@ -1,6 +1,6 @@
 import React from "react";
 
-const Reviews = ({ qualification }) => {
+const Reviews = ({ qualification, num }) => {
   let acum = 0.5;
   const arrayStars = [];
   for (let i = 1; i <= 5; i++) {
@@ -18,6 +18,9 @@ const Reviews = ({ qualification }) => {
       {arrayStars.map((star, index) => (
         <span key={index}>{star} </span>
       ))}
+      <span>
+        <h1 className="text-thumb">{num} reviews</h1>
+      </span>
     </>
   );
 };

@@ -1,0 +1,73 @@
+.catalogue {
+  margin: 0 auto;
+  background-color: white;
+  max-width: 1215px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+}
+
+.catalogue__categories {
+  width: 29rem;
+  min-width: 29rem;
+  height: 100vh;
+  background-color: var(--blue-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  padding: 2rem 0;
+}
+
+.catalogue__products {
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding-top: 0.4rem;
+}
+
+@media screen and (max-width: 40rem) {
+  .catalogue {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .catalogue__categories {
+    height: auto;
+    position: relative;
+  }
+}
+
+.catalogue__list {
+  align-self: stretch;
+  padding: 1rem 3rem;
+}
+
+.catalogue__checkbox {
+  width: 1.6rem;
+  height: 1.6rem;
+  margin: auto;
+}
+
+.catalogue__label {
+  padding: 0.8rem;
+}
+
+.catalogue__label:hover {
+  cursor: pointer;
+}
+
+.catalogue__item {
+  padding: 0.3rem;
+  margin: 0.5rem 0;
+}
+
+.catalogue__button {
+  color: var(--light-color);
+}

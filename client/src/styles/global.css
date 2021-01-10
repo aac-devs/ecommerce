@@ -1,0 +1,45 @@
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+.text-title {
+  padding: 0.5rem 0;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: var(--blue-color);
+  text-transform: capitalize;
+}
+
+.text-title--light {
+  color: var(--light-color);
+}
+
+.text-body {
+  padding: 0.5rem 0;
+  font-size: 1.8rem;
+  color: var(--blue-color);
+  text-transform: capitalize;
+}
+
+.text-body--light {
+  color: var(--light-color);
+}
+
+.text-body--inline {
+  display: inline;
+}
+
+.text-thumb {
+  display: inline;
+  font-size: 1.3rem;
+  color: var(--blue-color);
+  font-style: italic;
+}
+
+.text-thumb--light {
+  color: var(--light-color);
+}

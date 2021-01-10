@@ -67,31 +67,37 @@ const Catalogue = () => {
   }
 
   return (
-    <div className="catalogue-main-container">
-      <aside className="">
-        <h2>categories</h2>
-        <div>
+    <div className="catalogue">
+      <aside className="catalogue__categories">
+        <h1 className="text-title text-title--light">categories</h1>
+        <div className='catalogue__list'>
           {categoriesWithStatus.map((item, index) => (
-            <div className="" key={index}>
+            <div className="catalogue__item" key={index}>
               <input
-                className=""
+                className="catalogue__checkbox"
                 type="checkbox"
                 value={item.status}
                 id={item.id}
                 checked={item.status}
                 onChange={handleClick}
               ></input>
-              <label className="" htmlFor={item.id}>
-                <h3>{item.name}</h3>
+              <label className="catalogue__label" htmlFor={item.id}>
+                <h1 className="text-body text-body--inline text-body--light ">
+                  {item.name}
+                </h1>
               </label>
             </div>
           ))}
         </div>
-        <button type="button" className="btn" onClick={handleButton}>
+        <button
+          type="button"
+          className="btn catalogue__button"
+          onClick={handleButton}
+        >
           browse all
         </button>
       </aside>
-      <section className="">
+      <div className="catalogue__products">
         {products.list.data.map((prod, index) => {
           if (browseAll) {
             return (
@@ -129,7 +135,7 @@ const Catalogue = () => {
             });
           }
         })}
-      </section>
+      </div>
     </div>
   );
 };
