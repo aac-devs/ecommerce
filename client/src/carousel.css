@@ -1,36 +1,27 @@
 :root {
+  /* Ancho y alto de cada imagen (imágenes cuadradas): */
   --image-size: 0px;
+  /* Ancho y alto del contenedor: */
   --carousel-width: 0px;
   --carousel-height: 0px;
-
-  --window-top-pos: 0px;
-  --window-left-pos: 0px;
-  --window-width: 0px;
-  --window-height: 0px;
-  --window-side-width: 0px;
-  --window-top-width: 0px;
-
+  /*  */
   --image-top-pos: 0px;
   --image-left-pos: 0px;
 
-  /* --image-space-width: 0px; */
-  /* --frame-top-width: 0px; */
-  /* --frame-side-width: 0px; */
+  --side-top: 0px;
+  --side-left-end: 0px;
+  --side-height: 0px;
+  --side-width: 0px;
 
-  --button-width: 0px;
-  --button-top-position: 0px;
-  --button-left-position: 0px;
+  --outline-offset: 0px;
 }
 
 .main-carousel {
   height: 100%;
   width: 100%;
-  /* background-color: lime; */
-  /* position: relative; */
 }
 
 .carousel {
-  /* display: inline; */
   min-height: var(--carousel-height);
   min-width: var(--carousel-width);
   height: var(--carousel-height);
@@ -45,65 +36,53 @@
   border: 1px solid var(--border-color);
 }
 
-.carousel__window {
-  /* background-color: wheat; */
-  min-height: var(--window-height);
-  min-width: var(--window-width);
-  height: var(--window-height);
-  width: var(--window-width);
-  border-top: var(--window-top-width) solid white;
-  border-left: var(--window-side-width) solid white;
-  border-right: var(--window-side-width) solid white;
-  border-bottom: var(--window-top-width) solid white;
+.carousel__side {
   position: absolute;
-  top: var(--window-top-pos);
-  left: var(--window-left-pos);
+  height: var(--side-height);
+  width: var(--side-width);
+  background-color: white;
   z-index: 10;
-  overflow-x: hidden;
-  border-radius: 1rem;
-  background-color: transparent;
+  top: var(--side-top);
+  left: 0px;
+}
+
+.carousel__side-end {
+  top: var(--side-top);
+  left: var(--side-left-end);
 }
 
 .carousel__images {
-  /* display: inline; */
   min-height: var(--image-size);
   min-width: var(--image-size);
   height: var(--image-size);
   width: var(--image-size);
-
   position: absolute;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   background-color: white;
-  /* background-color: dodgerblue; */
-
-  /* border: 1px solid black; */
+  outline: 1px solid white;
+  outline-offset: var(--outline-offset);
   top: var(--image-top-pos);
-  /* left: var(--left-position); */
-  transition: left 0.5s;
+  transition-property: left outline;
+  transition-duration: 0.5s, 0.4s;
   z-index: 9;
   cursor: pointer;
 }
 
+.carousel__images:hover {
+  outline: 1px solid dodgerblue;
+}
+
 .carousel__button {
   display: inline;
-  /* width: 3rem; */
-  /* min-width: 3rem; */
-  /* height: 3rem; */
-  /* min-height: 3rem; */
   position: absolute;
   border-radius: 0.5rem;
-  /* border-radius: 50%; */
-  /* top: 100px; */
-  /* left: var(--center-image); */
-  /* background-color: gray; */
   z-index: 100;
   display: flex;
   justify-content: center;
   align-self: center;
   transition-duration: 0.2s;
-  /* padding-top: 0.2rem; */
 }
 
 .carousel__button--enabled:hover {
@@ -121,7 +100,3 @@
   padding-top: 0.1rem;
   color: #ddd;
 }
-
-/* .carousel__button:active {
-  color: violet;
-} */

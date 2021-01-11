@@ -43,8 +43,8 @@ function App() {
         {allowRender ? (
           <Carousel
             data={products.list.data[2].images}
-            size={150}
-            simultaneous={1}
+            size={300}
+            simultaneous={3}
           />
         ) : null}
       </main>
