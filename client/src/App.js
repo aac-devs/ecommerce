@@ -41,7 +41,11 @@ function App() {
       <header>mi header</header>
       <main>
         {allowRender ? (
-          <Carousel data={products.list.data[5].images} size={300} />
+          <Carousel
+            data={products.list.data[6].images}
+            size={100}
+            simultaneous={2}
+          />
         ) : null}
       </main>
       {/* <main>{allowRender ? <Catalogue /> : null}</main> */}
