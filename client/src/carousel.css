@@ -17,17 +17,15 @@
   /* --frame-top-width: 0px; */
   /* --frame-side-width: 0px; */
 
+  --button-width: 0px;
   --button-top-position: 0px;
   --button-left-position: 0px;
-
-  --start-image: calc(var(--center-image) - var(--size-image));
-  --end-image: calc(var(--center-image) + var(--size-image));
 }
 
 .main-carousel {
   height: 100%;
   width: 100%;
-  background-color: lime;
+  /* background-color: lime; */
   /* position: relative; */
 }
 
@@ -38,12 +36,13 @@
   height: var(--carousel-height);
   width: var(--carousel-width);
   position: relative;
-  background-color: yellow;
+  background-color: white;
   z-index: 1;
   top: 100px;
   left: 200px;
   overflow-x: hidden;
-  /* border-radius: 1rem; */
+  border-radius: 1rem;
+  border: 1px solid var(--border-color);
 }
 
 .carousel__window {
@@ -61,7 +60,8 @@
   left: var(--window-left-pos);
   z-index: 10;
   overflow-x: hidden;
-  /* border-radius: 1rem; */
+  border-radius: 1rem;
+  background-color: transparent;
 }
 
 .carousel__images {
@@ -72,50 +72,54 @@
   width: var(--image-size);
 
   position: absolute;
-  background-color: dodgerblue;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+  /* background-color: dodgerblue; */
 
   /* border: 1px solid black; */
   top: var(--image-top-pos);
   /* left: var(--left-position); */
   transition: left 0.5s;
-  /* z-index: 10; */
-}
-
-.image-start {
-  left: var(--end-image);
-}
-
-.image-center {
-  left: var(--center-image);
-}
-
-.image-end {
-  left: var(--start-image);
+  z-index: 9;
+  cursor: pointer;
 }
 
 .carousel__button {
   display: inline;
-  width: 3rem;
-  min-width: 3rem;
-  height: 3rem;
-  min-height: 3rem;
+  /* width: 3rem; */
+  /* min-width: 3rem; */
+  /* height: 3rem; */
+  /* min-height: 3rem; */
   position: absolute;
-  /* border-radius: 1rem; */
-  border-radius: 50%;
+  border-radius: 0.5rem;
+  /* border-radius: 50%; */
   /* top: 100px; */
   /* left: var(--center-image); */
-  /* background-color: red; */
+  /* background-color: gray; */
   z-index: 100;
   display: flex;
   justify-content: center;
   align-self: center;
-  cursor: pointer;
   transition-duration: 0.2s;
-  padding-top: 0.2rem;
+  /* padding-top: 0.2rem; */
 }
 
-.carousel__button:hover {
-  transform: scale(1.3);
+.carousel__button--enabled:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 3px rgba(48, 71, 94, 0.7);
+  cursor: pointer;
+}
+
+.carousel__icon {
+  padding-top: 0.1rem;
+  color: fuchsia;
+}
+
+.carousel__icon--disabled {
+  padding-top: 0.1rem;
+  color: #ddd;
 }
 
 /* .carousel__button:active {
