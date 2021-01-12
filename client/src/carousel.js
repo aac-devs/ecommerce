@@ -1,65 +1,113 @@
 import React from "react";
 
-const Carousel = ({ data, size, simultaneous }) => {
+const Carousel = ({ data, size, simultaneous, border, rounded }) => {
   console.clear();
   const cant = simultaneous;
   const image_size = size;
   const arrayImagesSize = data.length;
-  const classButtonEnabled = "carousel__button carousel__button--enabled";
-  const classButtonDisabled = "carousel__button";
-  let classStartButton = classButtonDisabled;
-  let classEndButton = classButtonDisabled;
-  const classIconStartEnabled = "fa fa-chevron-left carousel__icon";
-  const classIconStartDisabled = "fa fa-chevron-left carousel__icon--disabled";
-  let classStartIcon = classIconStartDisabled;
-  const classIconEndEnabled = "fa fa-chevron-right carousel__icon";
-  const classIconEndDisabled = "fa fa-chevron-right carousel__icon--disabled";
-  let classEndIcon = classIconEndDisabled;
-  let btn_left_enable = false;
-  let btn_right_enable = false;
+  // Clases CSS para los botones e íconos de desplazamiento de imágenes:
+  const class_text = {
+    button: {
+      enabled: "carousel__button carousel__button--enabled",
+      disabled: "carousel__button",
+    },
+    icon: {
+      start: {
+        enabled: "fa fa-chevron-left carousel__icon",
+        disabled: "fa fa-chevron-left carousel__icon--disabled",
+      },
+      end: {
+        enabled: "fa fa-chevron-right carousel__icon",
+        disabled: "fa fa-chevron-right carousel__icon--disabled",
+      },
+    },
+  };
+  // Mantiene el estado de los botones e iconos:
+  const class_state = {
+    button: {
+      start: "",
+      end: "",
+    },
+    icon: {
+      start: "",
+      end: "",
+    },
+  };
+  // Guarda el estado
+  const btn_state = {
+    start: false,
+    end: false,
+  };
+
+  class_state.button.start = class_text.button.disabled;
+  class_state.button.end = class_text.button.disabled;
+  class_state.icon.start = class_text.icon.start.disabled;
+  class_state.icon.end = class_text.icon.end.disabled;
+
+  const cssvar = {
+    image: {
+      size: "--image-size",
+      top: "--image-top-pos",
+      left: "--image-left-pos",
+    },
+    carousel: {
+      width: "--carousel-width",
+      height: "--carousel-height",
+    },
+    side: {
+      height: "--side-height",
+      width: "--side-width",
+      top: "--side-top",
+      left_end: "--side-left-end",
+    },
+    outline: "--outline-offset",
+  };
+
+  console.log(class_text);
+  console.log(class_state);
 
   const enable_start = (state) => {
-    btn_left_enable = state;
+    btn_state.start = state;
     if (state) {
       document
         .getElementById("btn_start")
-        .setAttribute("class", classButtonEnabled);
+        .setAttribute("class", class_text.button.enabled);
       document
         .getElementById("icon_start")
-        .setAttribute("class", classIconStartEnabled);
+        .setAttribute("class", class_text.icon.start.enabled);
     } else {
       document
         .getElementById("btn_start")
-        .setAttribute("class", classButtonDisabled);
+        .setAttribute("class", class_text.button.disabled);
       document
         .getElementById("icon_start")
-        .setAttribute("class", classIconStartDisabled);
+        .setAttribute("class", class_text.icon.start.disabled);
     }
   };
 
   const enable_end = (state) => {
-    btn_right_enable = state;
+    btn_state.end = state;
     if (state) {
       document
         .getElementById("btn_end")
-        .setAttribute("class", classButtonEnabled);
+        .setAttribute("class", class_text.button.enabled);
       document
         .getElementById("icon_end")
-        .setAttribute("class", classIconEndEnabled);
+        .setAttribute("class", class_text.icon.end.enabled);
     } else {
       document
         .getElementById("btn_end")
-        .setAttribute("class", classButtonDisabled);
+        .setAttribute("class", class_text.button.disabled);
       document
         .getElementById("icon_end")
-        .setAttribute("class", classIconEndDisabled);
+        .setAttribute("class", class_text.icon.end.disabled);
     }
   };
 
   if (cant < arrayImagesSize) {
-    btn_left_enable = true;
-    classStartButton = classButtonEnabled;
-    classStartIcon = classIconStartEnabled;
+    btn_state.start = true;
+    class_state.button.start = class_text.button.enabled;
+    class_state.icon.start = class_text.icon.start.enabled;
   }
 
   const image_space = Math.round(image_size * 0.1);
@@ -76,11 +124,13 @@ const Carousel = ({ data, size, simultaneous }) => {
 
   // Carousel size:
   document.documentElement.style.setProperty(
-    "--carousel-width",
+    // "--carousel-width",
+    `${cssvar.carousel.width}`,
     `${carousel_width}px`
   );
   document.documentElement.style.setProperty(
-    "--carousel-height",
+    // "--carousel-height",
+    `${cssvar.carousel.height}`,
     `${carousel_height}px`
   );
 
@@ -94,29 +144,45 @@ const Carousel = ({ data, size, simultaneous }) => {
   // Side:
   // Width-Heigh:
   document.documentElement.style.setProperty(
-    "--side-height",
+    `${cssvar.side.height}`,
+    // "--side-height",
     `${side_height}px`
   );
-  document.documentElement.style.setProperty("--side-width", `${side_width}px`);
+  document.documentElement.style.setProperty(
+    `${cssvar.side.width}`,
+    // "--side-width",
+    `${side_width}px`
+  );
   // Position:
   // Top:
-  document.documentElement.style.setProperty("--side-top", `${side_top}px`);
   document.documentElement.style.setProperty(
-    "--side-left-end",
+    `${cssvar.side.top}`,
+    // "--side-top",
+    `${side_top}px`
+  );
+  document.documentElement.style.setProperty(
+    `${cssvar.side.left_end}`,
+    // "--side-left-end",
     `${side_left_end}px`
   );
 
   // Outline offset:
   document.documentElement.style.setProperty(
-    "--outline-offset",
+    `${cssvar.outline}`,
+    // "--outline-offset",
     `${outline_offset}px`
   );
   const window_width = carousel_width - side_width * 2;
 
   // Image:
-  document.documentElement.style.setProperty("--image-size", `${image_size}px`);
   document.documentElement.style.setProperty(
-    "--image-top-pos",
+    `${cssvar.image.size}`,
+    // "--image-size",
+    `${image_size}px`
+  );
+  document.documentElement.style.setProperty(
+    `${cssvar.image.top}`,
+    // "--image-top-pos",
     `${image_top_position}px`
   );
   // Left Position:
@@ -133,7 +199,8 @@ const Carousel = ({ data, size, simultaneous }) => {
         break;
     }
     document.documentElement.style.setProperty(
-      "--image-left-pos",
+      `${cssvar.image.left}`,
+      // "--image-left-pos",
       `${initialLeftPos}px`
     );
   } else if (arrayImagesSize === 2) {
@@ -141,26 +208,30 @@ const Carousel = ({ data, size, simultaneous }) => {
       let initialLeftPos =
         side_width + image_space + Math.round((image_size + image_space) / 2);
       document.documentElement.style.setProperty(
-        "--image-left-pos",
+        `${cssvar.image.left}`,
+        // "--image-left-pos",
         `${initialLeftPos}px`
       );
     } else {
       let initialLeftPos = side_width + image_space;
       document.documentElement.style.setProperty(
-        "--image-left-pos",
+        `${cssvar.image.left}`,
+        // "--image-left-pos",
         `${initialLeftPos}px`
       );
     }
   } else {
     let initialLeftPos = side_width + image_space;
     document.documentElement.style.setProperty(
-      "--image-left-pos",
+      `${cssvar.image.left}`,
+      // "--image-left-pos",
       `${initialLeftPos}px`
     );
   }
 
   const handleLeft = (e) => {
-    if (btn_left_enable) {
+    // if (btn_left_enable) {
+    if (btn_state.start) {
       enable_end(true);
       data.map((item, index) => {
         const value = document
@@ -183,7 +254,8 @@ const Carousel = ({ data, size, simultaneous }) => {
     }
   };
   const handleRight = (e) => {
-    if (btn_right_enable) {
+    // if (btn_right_enable) {
+    if (btn_state.end) {
       enable_start(true);
       data.map((item, index) => {
         const value = document
@@ -213,14 +285,15 @@ const Carousel = ({ data, size, simultaneous }) => {
   return (
     <div className="main-carousel">
       <div className="carousel">
-        {/* <div className="carousel__window"></div> */}
         {data.map((item, index) => {
           const leftValue = getComputedStyle(
             document.documentElement
-          ).getPropertyValue("--image-left-pos");
+          // ).getPropertyValue("--image-left-pos");
+          ).getPropertyValue(cssvar.image.left);
           const res = parseInt(leftValue.replace("px", ""));
           document.documentElement.style.setProperty(
-            "--image-left-pos",
+            // "--image-left-pos",
+            cssvar.image.left,
             `${res + size + image_space}px`
           );
           return (
@@ -239,7 +312,8 @@ const Carousel = ({ data, size, simultaneous }) => {
 
         <div
           id="btn_start"
-          className={`${classStartButton}`}
+          // className={`${classStartButton}`}
+          className={`${class_state.button.start}`}
           onClick={handleLeft}
           style={{
             top: `${buttons_top_position}px`,
@@ -252,7 +326,8 @@ const Carousel = ({ data, size, simultaneous }) => {
         >
           <i
             id="icon_start"
-            className={`${classStartIcon}`}
+            // className={`${classStartIcon}`}
+            className={`${class_state.icon.start}`}
             style={{
               fontSize: `${button_size}px`,
             }}
@@ -262,7 +337,8 @@ const Carousel = ({ data, size, simultaneous }) => {
         <div className="carousel__side carousel__side-end"></div>
         <div
           id="btn_end"
-          className={`${classEndButton}`}
+          // className={`${classEndButton}`}
+          className={`${class_state.button.end}`}
           onClick={handleRight}
           style={{
             width: `${button_size}px`,
@@ -275,7 +351,8 @@ const Carousel = ({ data, size, simultaneous }) => {
         >
           <i
             id="icon_end"
-            className={`${classEndIcon}`}
+            // className={`${classEndIcon}`}
+            className={`${class_state.icon.end}`}
             style={{
               fontSize: `${button_size}px`,
             }}
