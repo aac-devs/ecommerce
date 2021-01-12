@@ -1,244 +1,217 @@
 import React from "react";
 
+// Clases CSS para los botones e íconos de desplazamiento de imágenes:
+const class_text = {
+  button: {
+    enabled: "carousel__button carousel__button--enabled",
+    disabled: "carousel__button",
+  },
+  icon: {
+    start: {
+      enabled: "fa fa-chevron-left carousel__icon",
+      disabled: "fa fa-chevron-left carousel__icon--disabled",
+    },
+    end: {
+      enabled: "fa fa-chevron-right carousel__icon",
+      disabled: "fa fa-chevron-right carousel__icon--disabled",
+    },
+  },
+};
+
+const class_state = {
+  button: {
+    start: "",
+    end: "",
+  },
+  icon: {
+    start: "",
+    end: "",
+  },
+};
+
+const btn_state = {
+  start: false,
+  end: false,
+};
+
+const cssvars = {
+  image_size: "--image-size",
+  image_top: "--image-top-pos",
+  image_left: "--image-left-pos",
+  carousel_width: "--carousel-width",
+  carousel_height: "--carousel-height",
+  side_height: "--side-height",
+  side_width: "--side-width",
+  side_top: "--side-top",
+  side_left_end: "--side-left-end",
+  outline: "--outline-offset",
+};
+
+const vbles = {
+  js: {
+    data: 0,
+    simultaneous: 0,
+    image_size: 0,
+    array_length: 0,
+    image_space: 0,
+    window_width: 0,
+    button: {
+      size: 0,
+      pos: {
+        top: 0,
+        start: 0,
+        end: 0,
+      },
+    },
+  },
+  css: {
+    image_size: 0,
+    image_top: 0,
+    image_left: 0,
+    carousel_width: 0,
+    carousel_height: 0,
+    side_height: 0,
+    side_width: 0,
+    side_top: 0,
+    side_left_end: 0,
+    outline: 0,
+  },
+};
+
+const element = document.documentElement;
+
+const bem = {
+  carousel: {
+    main: "carousel",
+    side: "carousel__side",
+    side_end: "carousel__side carousel__side-end",
+    images: "carousel__images",
+  },
+};
+
+const id = {
+  button: {
+    start: "btn_start",
+    end: "btn_end",
+  },
+  icon: {
+    start: "icon_start",
+    end: "icon_end",
+  },
+};
+
 const Carousel = ({ data, size, simultaneous, border, rounded }) => {
   console.clear();
-  const cant = simultaneous;
-  const image_size = size;
-  const arrayImagesSize = data.length;
-  // Clases CSS para los botones e íconos de desplazamiento de imágenes:
-  const class_text = {
-    button: {
-      enabled: "carousel__button carousel__button--enabled",
-      disabled: "carousel__button",
-    },
-    icon: {
-      start: {
-        enabled: "fa fa-chevron-left carousel__icon",
-        disabled: "fa fa-chevron-left carousel__icon--disabled",
-      },
-      end: {
-        enabled: "fa fa-chevron-right carousel__icon",
-        disabled: "fa fa-chevron-right carousel__icon--disabled",
-      },
-    },
-  };
-  // Mantiene el estado de los botones e iconos:
-  const class_state = {
-    button: {
-      start: "",
-      end: "",
-    },
-    icon: {
-      start: "",
-      end: "",
-    },
-  };
-  // Guarda el estado
-  const btn_state = {
-    start: false,
-    end: false,
-  };
+  vbles.js.data = data;
+  vbles.js.simultaneous = simultaneous;
+  vbles.js.image_size = size;
+  vbles.js.array_length = vbles.js.data.length;
 
   class_state.button.start = class_text.button.disabled;
   class_state.button.end = class_text.button.disabled;
   class_state.icon.start = class_text.icon.start.disabled;
   class_state.icon.end = class_text.icon.end.disabled;
 
-  const cssvar = {
-    image: {
-      size: "--image-size",
-      top: "--image-top-pos",
-      left: "--image-left-pos",
-    },
-    carousel: {
-      width: "--carousel-width",
-      height: "--carousel-height",
-    },
-    side: {
-      height: "--side-height",
-      width: "--side-width",
-      top: "--side-top",
-      left_end: "--side-left-end",
-    },
-    outline: "--outline-offset",
-  };
-
   console.log(class_text);
   console.log(class_state);
 
-  const enable_start = (state) => {
-    btn_state.start = state;
-    if (state) {
-      document
-        .getElementById("btn_start")
-        .setAttribute("class", class_text.button.enabled);
-      document
-        .getElementById("icon_start")
-        .setAttribute("class", class_text.icon.start.enabled);
-    } else {
-      document
-        .getElementById("btn_start")
-        .setAttribute("class", class_text.button.disabled);
-      document
-        .getElementById("icon_start")
-        .setAttribute("class", class_text.icon.start.disabled);
-    }
+  // state: true || false
+  // el: 'start' || 'end'
+  const button_enable = (state, el) => {
+    btn_state[el] = state;
+    document
+      .getElementById(id.button[el])
+      .setAttribute(
+        "class",
+        state ? class_text.button.enabled : class_text.button.disabled
+      );
+    document
+      .getElementById(id.icon[el])
+      .setAttribute(
+        "class",
+        state ? class_text.icon[el].enabled : class_text.icon[el].disabled
+      );
   };
 
-  const enable_end = (state) => {
-    btn_state.end = state;
-    if (state) {
-      document
-        .getElementById("btn_end")
-        .setAttribute("class", class_text.button.enabled);
-      document
-        .getElementById("icon_end")
-        .setAttribute("class", class_text.icon.end.enabled);
-    } else {
-      document
-        .getElementById("btn_end")
-        .setAttribute("class", class_text.button.disabled);
-      document
-        .getElementById("icon_end")
-        .setAttribute("class", class_text.icon.end.disabled);
-    }
-  };
-
-  if (cant < arrayImagesSize) {
+  if (vbles.js.simultaneous < vbles.js.array_length) {
     btn_state.start = true;
     class_state.button.start = class_text.button.enabled;
     class_state.icon.start = class_text.icon.start.enabled;
   }
 
-  const image_space = Math.round(image_size * 0.1);
-  const image_top_position = image_space;
-  const carousel_height = image_space * 2 + image_size;
-  const side_width = image_space * 2;
-  const carousel_width =
-    side_width * 2 + (cant + 1) * image_space + cant * image_size;
-
-  const side_height = image_size;
-  const side_top = image_space;
-  const side_left_end = carousel_width - side_width;
-  const outline_offset = Math.round(image_space * 0.25);
-
-  // Carousel size:
-  document.documentElement.style.setProperty(
-    // "--carousel-width",
-    `${cssvar.carousel.width}`,
-    `${carousel_width}px`
-  );
-  document.documentElement.style.setProperty(
-    // "--carousel-height",
-    `${cssvar.carousel.height}`,
-    `${carousel_height}px`
-  );
+  vbles.js.image_space = Math.round(vbles.js.image_size * 0.1);
+  vbles.css.image_top = vbles.js.image_space;
+  vbles.css.carousel_height = vbles.js.image_space * 2 + vbles.js.image_size;
+  vbles.css.side_width = vbles.js.image_space * 2;
+  vbles.css.carousel_width =
+    vbles.css.side_width * 2 +
+    (vbles.js.simultaneous + 1) * vbles.js.image_space +
+    vbles.js.simultaneous * vbles.js.image_size;
+  vbles.css.side_height = vbles.js.image_size;
+  vbles.css.side_top = vbles.js.image_space;
+  vbles.css.side_left_end = vbles.css.carousel_width - vbles.css.side_width;
+  vbles.css.outline = Math.round(vbles.js.image_space * 0.25);
 
   // Buttons:
-  const button_size = Math.round(side_width * 0.8);
-  const button_start_position = side_width * 0.1;
-  const button_end_position =
-    carousel_width - side_width + button_start_position;
-  const buttons_top_position = carousel_height / 2 - button_size / 2;
-
-  // Side:
-  // Width-Heigh:
-  document.documentElement.style.setProperty(
-    `${cssvar.side.height}`,
-    // "--side-height",
-    `${side_height}px`
-  );
-  document.documentElement.style.setProperty(
-    `${cssvar.side.width}`,
-    // "--side-width",
-    `${side_width}px`
-  );
-  // Position:
-  // Top:
-  document.documentElement.style.setProperty(
-    `${cssvar.side.top}`,
-    // "--side-top",
-    `${side_top}px`
-  );
-  document.documentElement.style.setProperty(
-    `${cssvar.side.left_end}`,
-    // "--side-left-end",
-    `${side_left_end}px`
+  vbles.js.button.size = Math.round(vbles.css.side_width * 0.8);
+  vbles.js.button.pos.start = Math.round(vbles.css.side_width * 0.1);
+  vbles.js.button.pos.end =
+    vbles.css.carousel_width - vbles.css.side_width + vbles.js.button.pos.start;
+  vbles.js.button.pos.top = Math.round(
+    (vbles.css.carousel_height - vbles.js.button.size) / 2
   );
 
-  // Outline offset:
-  document.documentElement.style.setProperty(
-    `${cssvar.outline}`,
-    // "--outline-offset",
-    `${outline_offset}px`
-  );
-  const window_width = carousel_width - side_width * 2;
+  const style = element.style;
+  vbles.css.image_size = vbles.js.image_size;
+  for (let prop in vbles.css) {
+    style.setProperty(cssvars[prop], `${vbles.css[prop]}px`);
+  }
 
-  // Image:
-  document.documentElement.style.setProperty(
-    `${cssvar.image.size}`,
-    // "--image-size",
-    `${image_size}px`
-  );
-  document.documentElement.style.setProperty(
-    `${cssvar.image.top}`,
-    // "--image-top-pos",
-    `${image_top_position}px`
-  );
+  console.log(vbles);
+
   // Left Position:
-  if (arrayImagesSize === 1) {
-    let initialLeftPos = side_width + image_space;
-    switch (cant) {
+  if (vbles.js.array_length === 1) {
+    let initialLeftPos = vbles.css.side_width + vbles.js.image_space;
+    switch (vbles.js.simultaneous) {
       case 2:
-        initialLeftPos += Math.round((image_size + image_space) / 2);
+        initialLeftPos += Math.round(
+          (vbles.js.image_size + vbles.js.image_space) / 2
+        );
         break;
       case 3:
-        initialLeftPos += image_space + image_size;
+        initialLeftPos += vbles.js.image_size + vbles.js.image_space;
         break;
       default:
         break;
     }
-    document.documentElement.style.setProperty(
-      `${cssvar.image.left}`,
-      // "--image-left-pos",
-      `${initialLeftPos}px`
-    );
-  } else if (arrayImagesSize === 2) {
-    if (cant === 3) {
+    style.setProperty(`${cssvars.image_left}`, `${initialLeftPos}px`);
+  } else if (vbles.js.array_length === 2) {
+    if (vbles.js.simultaneous === 3) {
       let initialLeftPos =
-        side_width + image_space + Math.round((image_size + image_space) / 2);
-      document.documentElement.style.setProperty(
-        `${cssvar.image.left}`,
-        // "--image-left-pos",
-        `${initialLeftPos}px`
-      );
+        vbles.css.side_width +
+        vbles.js.image_space +
+        Math.round((vbles.js.image_size + vbles.js.image_space) / 2);
+      style.setProperty(`${cssvars.image_left}`, `${initialLeftPos}px`);
     } else {
-      let initialLeftPos = side_width + image_space;
-      document.documentElement.style.setProperty(
-        `${cssvar.image.left}`,
-        // "--image-left-pos",
-        `${initialLeftPos}px`
-      );
+      let initialLeftPos = vbles.css.side_width + vbles.js.image_space;
+      style.setProperty(`${cssvars.image_left}`, `${initialLeftPos}px`);
     }
   } else {
-    let initialLeftPos = side_width + image_space;
-    document.documentElement.style.setProperty(
-      `${cssvar.image.left}`,
-      // "--image-left-pos",
-      `${initialLeftPos}px`
-    );
+    let initialLeftPos = vbles.css.side_width + vbles.js.image_space;
+    style.setProperty(`${cssvars.image_left}`, `${initialLeftPos}px`);
   }
 
   const handleLeft = (e) => {
-    // if (btn_left_enable) {
     if (btn_state.start) {
-      enable_end(true);
-      data.map((item, index) => {
+      button_enable(true, "end");
+      vbles.js.data.map((item, index) => {
         const value = document
           .getElementById(`image-item-${index}`)
           .style.getPropertyValue("left");
-
-        const res = parseInt(value.replace("px", "")) - size - image_space;
+        const res =
+          parseInt(value.replace("px", "")) -
+          vbles.js.image_size -
+          vbles.js.image_space;
         document
           .getElementById(`image-item-${index}`)
           .style.setProperty("left", `${res}px`);
@@ -246,22 +219,26 @@ const Carousel = ({ data, size, simultaneous, border, rounded }) => {
       });
     }
     const value = document
-      .getElementById(`image-item-${arrayImagesSize - 1}`)
+      .getElementById(`image-item-${vbles.js.array_length - 1}`)
       .style.getPropertyValue("left");
     const res = parseInt(value.replace("px", ""));
-    if (res < window_width) {
-      enable_start(false);
+    if (res < vbles.js.window_width) {
+      button_enable(false, "start");
     }
+    console.log("res", res);
+    console.log("window_width", vbles.js.window_width);
   };
   const handleRight = (e) => {
-    // if (btn_right_enable) {
     if (btn_state.end) {
-      enable_start(true);
-      data.map((item, index) => {
+      button_enable(true, "start");
+      vbles.js.data.map((item, index) => {
         const value = document
           .getElementById(`image-item-${index}`)
           .style.getPropertyValue("left");
-        const res = parseInt(value.replace("px", "")) + size + image_space;
+        const res =
+          parseInt(value.replace("px", "")) +
+          vbles.js.image_size +
+          vbles.js.image_space;
         document
           .getElementById(`image-item-${index}`)
           .style.setProperty("left", `${res}px`);
@@ -273,7 +250,7 @@ const Carousel = ({ data, size, simultaneous, border, rounded }) => {
       .style.getPropertyValue("left");
     const res = parseInt(value.replace("px", ""));
     if (res > 0) {
-      enable_end(false);
+      button_enable(false, "end");
     }
   };
 
@@ -284,23 +261,21 @@ const Carousel = ({ data, size, simultaneous, border, rounded }) => {
 
   return (
     <div className="main-carousel">
-      <div className="carousel">
-        {data.map((item, index) => {
-          const leftValue = getComputedStyle(
-            document.documentElement
-          // ).getPropertyValue("--image-left-pos");
-          ).getPropertyValue(cssvar.image.left);
+      <div className={bem.carousel.main}>
+        {vbles.js.data.map((item, index) => {
+          const leftValue = getComputedStyle(element).getPropertyValue(
+            cssvars.image_left
+          );
           const res = parseInt(leftValue.replace("px", ""));
-          document.documentElement.style.setProperty(
-            // "--image-left-pos",
-            cssvar.image.left,
-            `${res + size + image_space}px`
+          style.setProperty(
+            cssvars.image_left,
+            `${res + vbles.js.image_size + vbles.js.image_space}px`
           );
           return (
             <div
               key={index}
               id={`image-item-${index}`}
-              className={`carousel__images`}
+              className={bem.carousel.images}
               style={{
                 left: `${leftValue}`,
                 backgroundImage: `url(${item.url})`,
@@ -311,50 +286,46 @@ const Carousel = ({ data, size, simultaneous, border, rounded }) => {
         })}
 
         <div
-          id="btn_start"
-          // className={`${classStartButton}`}
-          className={`${class_state.button.start}`}
+          id={id.button.start}
+          className={class_state.button.start}
           onClick={handleLeft}
           style={{
-            top: `${buttons_top_position}px`,
-            left: `${button_start_position}px`,
-            width: `${button_size}px`,
-            minWidth: `${button_size}px`,
-            height: `${button_size}px`,
-            minHeight: `${button_size}px`,
+            top: `${vbles.js.button.pos.top}px`,
+            left: `${vbles.js.button.pos.start}px`,
+            width: `${vbles.js.button.size}px`,
+            minWidth: `${vbles.js.button.size}px`,
+            height: `${vbles.js.button.size}px`,
+            minHeight: `${vbles.js.button.size}px`,
           }}
         >
           <i
-            id="icon_start"
-            // className={`${classStartIcon}`}
-            className={`${class_state.icon.start}`}
+            id={id.icon.start}
+            className={class_state.icon.start}
             style={{
-              fontSize: `${button_size}px`,
+              fontSize: `${vbles.js.button.size}px`,
             }}
           ></i>
         </div>
-        <div className="carousel__side"></div>
-        <div className="carousel__side carousel__side-end"></div>
+        <div className={bem.carousel.side}></div>
+        <div className={bem.carousel.side_end}></div>
         <div
-          id="btn_end"
-          // className={`${classEndButton}`}
-          className={`${class_state.button.end}`}
+          id={id.button.end}
+          className={class_state.button.end}
           onClick={handleRight}
           style={{
-            width: `${button_size}px`,
-            minWidth: `${button_size}px`,
-            height: `${button_size}px`,
-            minHeight: `${button_size}px`,
-            top: `${buttons_top_position}px`,
-            left: `${button_end_position}px`,
+            width: `${vbles.js.button.size}px`,
+            minWidth: `${vbles.js.button.size}px`,
+            height: `${vbles.js.button.size}px`,
+            minHeight: `${vbles.js.button.size}px`,
+            top: `${vbles.js.button.pos.top}px`,
+            left: `${vbles.js.button.pos.end}px`,
           }}
         >
           <i
-            id="icon_end"
-            // className={`${classEndIcon}`}
-            className={`${class_state.icon.end}`}
+            id={id.icon.end}
+            className={class_state.icon.end}
             style={{
-              fontSize: `${button_size}px`,
+              fontSize: `${vbles.js.button.size}px`,
             }}
           ></i>
         </div>

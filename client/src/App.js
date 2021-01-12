@@ -44,7 +44,7 @@ function App() {
           <Carousel
             data={products.list.data[2].images}
             size={300}
-            simultaneous={3}
+            simultaneous={1}
           />
         ) : null}
       </main>
