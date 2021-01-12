@@ -1,26 +1,52 @@
 import React from "react";
 import Reviews from "./Reviews";
 
-const ProductCard = ({ name, image, reviews, price }) => {
-  console.log(image);
+const ProductCard = ({
+  product,
+  reviews,
+  onDetailsClick,
+  onAddToCartClick,
+}) => {
+  const { name, id, images, price } = product;
+  const image = images[0].url;
+  console.log(product);
+
   return (
     <div className="card">
       <div
-        className="card__img"
+        id={id}
+        className="card__image"
         style={{
           backgroundImage: `url(${image})`,
         }}
+        onClick={onDetailsClick}
       ></div>
-      <hr></hr>
-      <h1 className="text-title card__price">
+      <hr
+        style={{
+          width: "100%",
+        }}
+      ></hr>
+      <h1 className="text__title">
         $ {price.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, "$&,")}
       </h1>
-      <h1 className="text-body card__title">{name}</h1>
+      <h1
+        id={id}
+        className="text__subtitle card__name"
+        onClick={onDetailsClick}
+      >
+        {name}
+      </h1>
       <div className="card__filler"></div>
-      <div className="card__reviews">
+      <div className="text__thumb card__reviews">
         <Reviews qualification={reviews} num={48} />
       </div>
-      <button className="btn card__button">add to cart</button>
+      <button
+        id={id}
+        className="global__button global__button--light card__button"
+        onClick={onAddToCartClick}
+      >
+        add to cart
+      </button>
     </div>
   );
 };

@@ -1,0 +1,36 @@
+.product {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.product__images {
+  /* height: 32rem; */
+  min-width: 30rem;
+  width: 30rem;
+
+  /* min-height: 30rem; */
+  background-color: pink;
+}
+
+.product__main-image {
+  height: 28rem;
+  width: 28rem;
+  margin: 1rem;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+}
+
+.product__thumb-images {
+}
+
+.product__details {
+  height: 30rem;
+  width: 27rem;
+  min-height: 30rem;
+  min-width: 27rem;
+  background-color: lime;
+}

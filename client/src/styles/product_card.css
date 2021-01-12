@@ -1,30 +1,42 @@
-.card {
-  padding: 1rem;
-  margin: 0.4rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
-  width: 27rem;
-  height: 48rem;
-  border: 1px solid var(--border-color);
-  border-radius: 0.3rem;
+:root {
+  --card-width: var(--min-device-screen);
+  --card-height: 48rem;
+  --image-height: 28rem;
 }
 
-.card__img {
-  width: 28rem;
-  height: 29rem;
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  height: var(--card-height);
+  border: 1px solid var(--border-color);
+  border-radius: 0.3rem;
+  padding: 1rem;
+  width: var(--card-width);
+  min-width: var(--card-width);
+}
+
+.card__image {
+  height: var(--image-height);
+  width: 100%;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: white;
+  cursor: pointer;
 }
 
 .card__price {
   margin-top: 0.5rem;
 }
 
-.card__title {
+.card__name {
+  align-self: flex-start;
+  cursor: pointer;
+}
+
+.card__name:hover {
+  text-decoration-line: underline;
 }
 
 .card__filler {
@@ -38,5 +50,4 @@
 
 .card__button {
   align-self: flex-end;
-  color: var(--light-color);
 }

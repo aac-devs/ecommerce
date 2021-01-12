@@ -1,0 +1,16 @@
+:root {
+  --red-color: #f05454;
+  --blue-color: #30475e;
+  --light-color: #e8e8e8;
+  --dark-color: #222831;
+  --border-color: #ddd;
+
+  --header-height: 5rem;
+  --footer-height: 5rem;
+
+  /* Usado para mantener uniformidad en el ancho de los componentes cuando la pantalla del dispositivo sea de 320px, que es el valor mínimo definido para dispositivos: */
+  --min-device-screen: 30rem;
+
+
+  
+}

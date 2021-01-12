@@ -1,0 +1,43 @@
+.text__title {
+  padding: 0.5rem 0;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: var(--blue-color);
+  text-transform: capitalize;
+}
+
+.text__title--light {
+  color: var(--light-color);
+}
+
+.text__subtitle {
+  padding: 0.5rem 0;
+  font-size: 1.8rem;
+  color: var(--blue-color);
+  text-transform: capitalize;
+}
+
+.text__subtitle--light {
+  color: var(--light-color);
+}
+
+.text__subtitle--inline {
+  display: inline;
+}
+
+.text__paragraph {
+}
+
+.text__paragraph--ligth {
+}
+
+.text__thumb {
+  display: inline;
+  font-size: 1.3rem;
+  color: var(--blue-color);
+  font-style: italic;
+}
+
+.text__thumb--light {
+  color: var(--light-color);
+}

@@ -1,3 +1,50 @@
+html {
+  font-size: 62.5%; /* 16px x 62.5 = 10px = 1rem */
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-size: 1.6rem;
+  font-family: Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#root {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+.header {
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  height: var(--header-height);
+  min-height: var(--header-height);
+}
+.main {
+  flex-grow: 1;
+  padding: 1rem;
+}
+.footer {
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  height: var(--footer-height);
+  min-height: var(--footer-height);
+}
+
 h1,
 h2,
 h3 {
@@ -6,40 +53,39 @@ h3 {
   font-weight: normal;
 }
 
-.text-title {
-  padding: 0.5rem 0;
-  font-size: 2.2rem;
-  font-weight: bold;
-  color: var(--blue-color);
+.global__star {
+  color: orange;
+}
+
+.global__button {
+  display: block;
+  color: var(--dark-color);
+  background-color: var(--red-color);
+  border: none;
+  outline: none;
   text-transform: capitalize;
-}
-
-.text-title--light {
-  color: var(--light-color);
-}
-
-.text-body {
-  padding: 0.5rem 0;
   font-size: 1.8rem;
-  color: var(--blue-color);
-  text-transform: capitalize;
+  padding: 0.6rem 1rem 0.4rem;
+  border-radius: 0.3rem;
+  outline: 1px solid white;
+  outline-offset: 0.2rem;
+  transition: outline 0.5s;
+  cursor: pointer;
 }
 
-.text-body--light {
-  color: var(--light-color);
-}
-
-.text-body--inline {
+.global__button--inline {
   display: inline;
 }
 
-.text-thumb {
-  display: inline;
-  font-size: 1.3rem;
-  color: var(--blue-color);
-  font-style: italic;
+.global__button--light {
+  color: var(--light-color);
 }
 
-.text-thumb--light {
-  color: var(--light-color);
+.global__button:hover {
+  outline: 1px solid dodgerblue;
+}
+
+.global__button:active {
+  background-color: crimson;
+  transform: scale(0.99);
 }

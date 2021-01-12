@@ -5,11 +5,11 @@ const Reviews = ({ qualification, num }) => {
   const arrayStars = [];
   for (let i = 1; i <= 5; i++) {
     if (qualification > acum) {
-      arrayStars.push(<i className="fa fa-star star" key={i} />);
+      arrayStars.push(<i className="fa fa-star global__star" key={i} />);
     } else if (qualification < acum) {
-      arrayStars.push(<i className="fa fa-star-o star" key={i} />);
+      arrayStars.push(<i className="fa fa-star-o global__star" key={i} />);
     } else {
-      arrayStars.push(<i className="fa fa-star-half-o star" key={i} />);
+      arrayStars.push(<i className="fa fa-star-half-o global__star" key={i} />);
     }
     acum = acum + 1;
   }
@@ -19,7 +19,7 @@ const Reviews = ({ qualification, num }) => {
         <span key={index}>{star} </span>
       ))}
       <span>
-        <h1 className="text-thumb">{num} reviews</h1>
+        <h1 className="text__thumb">{num} reviews</h1>
       </span>
     </>
   );
