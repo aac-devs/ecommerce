@@ -16,33 +16,28 @@
   --outline-offset: 0px;
 }
 
-.main-carousel {
-  height: 100%;
-  width: 100%;
-}
-
 .carousel {
   min-height: var(--carousel-height);
   min-width: var(--carousel-width);
   height: var(--carousel-height);
   width: var(--carousel-width);
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
   position: relative;
   background-color: white;
-  z-index: 1;
-  top: 100px;
-  left: 200px;
   overflow-x: hidden;
-  border-radius: 1rem;
-  border: 1px solid var(--border-color);
 }
 .carousel__side {
-  position: absolute;
   height: var(--side-height);
   width: var(--side-width);
-  background-color: white;
-  z-index: 10;
   top: var(--side-top);
   left: 0px;
+  z-index: 10;
+  position: absolute;
+  background-color: white;
 }
 .carousel__side-end {
   top: var(--side-top);
@@ -53,17 +48,17 @@
   min-width: var(--image-size);
   height: var(--image-size);
   width: var(--image-size);
+  top: var(--image-top-pos);
+  z-index: 9;
+  outline-offset: var(--outline-offset);
+  outline: 1px solid white;
   position: absolute;
+  background-color: white;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: white;
-  outline: 1px solid white;
-  outline-offset: var(--outline-offset);
-  top: var(--image-top-pos);
   transition-property: left outline;
   transition-duration: 0.5s, 0.4s;
-  z-index: 9;
   cursor: pointer;
 }
 .carousel__images:hover {
@@ -71,12 +66,12 @@
 }
 .carousel__button {
   display: inline;
-  position: absolute;
-  border-radius: 0.5rem;
-  z-index: 100;
   display: flex;
   justify-content: center;
   align-self: center;
+  position: absolute;
+  z-index: 100;
+  border-radius: 0.5rem;
   transition-duration: 0.2s;
 }
 .carousel__button--enabled:hover {

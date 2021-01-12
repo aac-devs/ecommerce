@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "./redux/actions/productActions";
 import { listCategories } from "./redux/actions/categoryActions";
 import Catalogue from "./catalogue";
-import Carousel from "./carousel";
+import Carousel from "./components/carousel/Carousel";
 
 let countApp = 0;
 
@@ -36,6 +36,11 @@ function App() {
     allowRender = true;
   }
 
+  const handled = (e) => {
+    console.log("Handle de App.js");
+    console.log(e);
+  };
+
   return (
     <div className="grid-container">
       <header>mi header</header>
@@ -43,8 +48,9 @@ function App() {
         {allowRender ? (
           <Carousel
             data={products.list.data[2].images}
-            size={300}
-            simultaneous={1}
+            size={100}
+            simultaneous={3}
+            onImageClick={handled}
           />
         ) : null}
       </main>
