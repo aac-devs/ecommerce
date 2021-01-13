@@ -11,10 +11,12 @@
   align-items: stretch;
   height: var(--card-height);
   border: 1px solid var(--border-color);
-  border-radius: 0.3rem;
+  border-radius: 0.5rem;
   padding: 1rem;
   width: var(--card-width);
   min-width: var(--card-width);
+  background: white;
+  margin-bottom: 1rem;
 }
 
 .card__image {

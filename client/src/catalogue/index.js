@@ -66,11 +66,21 @@ const Catalogue = () => {
     );
   }
 
+  const handlerAddToCart = (e) => {
+    console.log("Add to cart clicked!");
+    console.log(e.target.id);
+  };
+
+  const handlerProductDetails = (e) => {
+    console.log("Details clicked!");
+    console.log(e.target.id);
+  };
+
   return (
     <div className="catalogue">
       <aside className="catalogue__categories">
-        <h1 className="text-title text-title--light">categories</h1>
-        <div className='catalogue__list'>
+        <h1 className="text__title text__title--light">categories</h1>
+        <div className="catalogue__list">
           {categoriesWithStatus.map((item, index) => (
             <div className="catalogue__item" key={index}>
               <input
@@ -82,7 +92,7 @@ const Catalogue = () => {
                 onChange={handleClick}
               ></input>
               <label className="catalogue__label" htmlFor={item.id}>
-                <h1 className="text-body text-body--inline text-body--light ">
+                <h1 className="text__subtitle text__subtitle--inline  text__subtitle--light">
                   {item.name}
                 </h1>
               </label>
@@ -91,7 +101,7 @@ const Catalogue = () => {
         </div>
         <button
           type="button"
-          className="btn catalogue__button"
+          className="global__button global__button--light"
           onClick={handleButton}
         >
           browse all
@@ -103,11 +113,11 @@ const Catalogue = () => {
             return (
               <ProductCard
                 key={index}
-                name={prod.name}
-                price={prod.price}
+                product={prod}
                 reviews={3.5}
-                image={prod.images[0].url}
-              ></ProductCard>
+                onAddToCartClick={handlerAddToCart}
+                onDetailsClick={handlerProductDetails}
+              />
             );
           } else {
             let alreadyRender = false;
@@ -119,11 +129,11 @@ const Catalogue = () => {
                     return (
                       <ProductCard
                         key={index}
-                        name={prod.name}
-                        price={prod.price}
+                        product={prod}
                         reviews={3.5}
-                        image={prod.images[0].url}
-                      ></ProductCard>
+                        onAddToCartClick={handlerAddToCart}
+                        onDetailsClick={handlerProductDetails}
+                      />
                     );
                   } else {
                     return null;

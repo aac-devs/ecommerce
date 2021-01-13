@@ -1,11 +1,11 @@
 :root {
-  --column-width: var(--min-cel-width);
+  --column-width: var(--min-device-screen);
 }
 
 .catalogue {
   margin: 0 auto;
   background-color: white;
-  max-width: 1215px;
+  max-width: 1260px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -14,8 +14,8 @@
 }
 
 .catalogue__categories {
-  width: 30rem;
-  min-width: 30rem;
+  width: var(--column-width);
+  min-width: var(--column-width);
   height: 100vh;
   background-color: var(--blue-color);
   display: flex;
@@ -25,6 +25,8 @@
   position: sticky;
   top: 0;
   padding: 2rem 0;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .catalogue__products {
@@ -34,7 +36,7 @@
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  padding-top: 0.4rem;
+  padding: 0 1rem;
 }
 
 @media screen and (max-width: 40rem) {
@@ -45,11 +47,14 @@
   .catalogue__categories {
     height: auto;
     position: relative;
+    margin-bottom: 0;
+  }
+  .catalogue__products {
+    padding: 1rem 0 0 0;
   }
 }
 
 .catalogue__list {
-  align-self: stretch;
   padding: 1rem 3rem;
 }
 

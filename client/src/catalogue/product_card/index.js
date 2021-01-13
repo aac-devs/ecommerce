@@ -9,7 +9,7 @@ const ProductCard = ({
 }) => {
   const { name, id, images, price } = product;
   const image = images[0].url;
-  console.log(product);
+  // console.log(product);
 
   return (
     <div className="card">

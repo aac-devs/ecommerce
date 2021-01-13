@@ -58,15 +58,15 @@ function App() {
     <>
       <div className="header">mi header</div>
       <div className="main">
-        {/* {allowRender ? <Catalogue /> : null} */}
-        {allowRender ? (
+        {allowRender ? <Catalogue /> : null}
+        {/* {allowRender ? (
           <ProductCard
             product={products.list.data[0]}
             reviews={3.5}
             onAddToCartClick={handAddTo}
             onDetailsClick={handDetail}
           />
-        ) : null}
+        ) : null} */}
         {/* {allowRender ? <Product product={products.list.data[2]} /> : null} */}
         {/* {allowRender ? (
           <Carousel
