@@ -58,7 +58,7 @@ function App() {
     <>
       <div className="header">mi header</div>
       <div className="main">
-        {allowRender ? <Catalogue /> : null}
+        {/* {allowRender ? <Catalogue /> : null} */}
         {/* {allowRender ? (
           <ProductCard
             product={products.list.data[0]}
@@ -67,13 +67,13 @@ function App() {
             onDetailsClick={handDetail}
           />
         ) : null} */}
-        {/* {allowRender ? <Product product={products.list.data[2]} /> : null} */}
+        {allowRender ? <Product product={products.list.data[1]} /> : null}
         {/* {allowRender ? (
           <Carousel
             data={products.list.data[2].images}
-            size={100}
+            size={78}
             simultaneous={3}
-            onImageClick={handled}
+            // onImageClick={handled}
           />
         ) : null} */}
       </div>
