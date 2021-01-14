@@ -36,16 +36,16 @@ export const listProducts = () => async (dispatch) => {
 //   }
 // };
 
-// export const productSearch = (query) => async (dispatch) => {
-//   dispatch({
-//     type: PRODUCT_SEARCH_REQUEST,
-//   });
-//   try {
-//     const { data } = await Axios.get(
-//       `http://localhost:5001/search?query=${query}`
-//     );
-//     dispatch({ type: PRODUCT_SEARCH_SUCCESS, payload: data.data });
-//   } catch (error) {
-//     dispatch({ type: PRODUCT_SEARCH_FAIL, payload: error.message });
-//   }
-// };
+export const productSearch = (query) => async (dispatch) => {
+  dispatch({
+    type: PRODUCT_SEARCH_REQUEST,
+  });
+  try {
+    const { data } = await Axios.get(
+      `http://localhost:5000/search?query=${query}`
+    );
+    dispatch({ type: PRODUCT_SEARCH_SUCCESS, payload: data.data });
+  } catch (error) {
+    dispatch({ type: PRODUCT_SEARCH_FAIL, payload: error.message });
+  }
+};

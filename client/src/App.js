@@ -6,6 +6,7 @@ import Catalogue from "./catalogue";
 import Carousel from "./components/carousel/Carousel";
 import Product from "./product";
 import ProductCard from "./catalogue/product_card";
+import SearchBar from "./search_bar";
 
 let countApp = 0;
 
@@ -67,9 +68,9 @@ function App() {
             onDetailsClick={handDetail}
           />
         ) : null} */}
-        {allowRender ? (
+        {/* {allowRender ? (
           <Product product={products.list.data[9]} reviews={3.5} />
-        ) : null}
+        ) : null} */}
         {/* {allowRender ? (
           <Carousel
             data={products.list.data[2].images}
@@ -78,6 +79,7 @@ function App() {
             // onImageClick={handled}
           />
         ) : null} */}
+        {allowRender ? <SearchBar /> : null} REDUX-RENDER-ORG
       </div>
       <div className="footer">mifooter</div>
     </>

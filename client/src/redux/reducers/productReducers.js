@@ -40,17 +40,17 @@ export const productListReducer = (
 //   }
 // };
 
-// export const productSearchReducer = (state = {}, action) => {
-//   switch (action.type) {
-//     case PRODUCT_SEARCH_REQUEST:
-//       return { loading: true };
-//     case PRODUCT_SEARCH_SUCCESS:
-//       return { loading: false, list: action.payload };
-//     case PRODUCT_SEARCH_FAIL:
-//       return { loading: false, error: action.payload };
-//     case PRODUCT_SEARCH_RESET:
-//       return {};
-//     default:
-//       return state;
-//   }
-// };
+export const productSearchReducer = (state = {}, action) => {
+  switch (action.type) {
+    case PRODUCT_SEARCH_REQUEST:
+      return { loading: true };
+    case PRODUCT_SEARCH_SUCCESS:
+      return { loading: false, list: action.payload };
+    case PRODUCT_SEARCH_FAIL:
+      return { loading: false, error: action.payload };
+    case PRODUCT_SEARCH_RESET:
+      return {};
+    default:
+      return state;
+  }
+};

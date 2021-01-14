@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import {
   productListReducer,
   // productDetailsReducer,
-  // productSearchReducer,
+  productSearchReducer,
 } from "./reducers/productReducers";
 import {
   categoryListReducer,
@@ -35,7 +35,7 @@ const reducers = combineReducers({
   // Reducers relacionados con Product:
   productList: productListReducer,
   // productDetails: productDetailsReducer,
-  // productSearch: productSearchReducer,
+  productSearch: productSearchReducer,
 
   // Reducers relacionados con Category:
   categoryList: categoryListReducer,
