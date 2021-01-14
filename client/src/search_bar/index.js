@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import IdleTimer from "react-idle-timer";
 import { useDispatch, useSelector } from "react-redux";
+import ProductCard from "../catalogue/product_card";
 import { productSearch } from "../redux/actions/productActions";
 import { PRODUCT_SEARCH_RESET } from "../redux/constants/productConstants";
 
@@ -47,35 +48,64 @@ const SearchBar = () => {
     setFetch(value);
   };
 
+  const handleAddToCart = (e) => {
+    console.log("Add to cart:", e.target.id);
+  };
+
+  const handleProductDetail = (e) => {
+    console.log("Product details:", e.target.id);
+  };
+
   return (
     <div className="search">
       <div>
         <IdleTimer ref={idleTimerRef} timeout={500} onIdle={onIdle}></IdleTimer>
       </div>
       <div className="search__container">
-        <input
-          className="search__input"
-          type="text"
-          autoComplete="off"
-          autoCorrect="off"
-          spellCheck="false"
-          onClickCapture={handleClick}
-          onChange={handleChange}
-          value={value}
-        ></input>
-        <div className="search__buttons">
-          {button ? (
-            <div className="search__button">B</div>
-          ) : (
-            <div className="search__button" onClick={handleXButton}>
-              C
-            </div>
-          )}
+        <div className="search__window">
+          <input
+            className="search__input"
+            type="text"
+            autoComplete="off"
+            autoCorrect="off"
+            spellCheck="false"
+            onClickCapture={handleClick}
+            onChange={handleChange}
+            value={value}
+          ></input>
+          <div className="search__buttons">
+            {button ? (
+              <div className="search__button">
+                <i className="fa fa-search"></i>
+              </div>
+            ) : (
+              <div className="search__button" onClick={handleXButton}>
+                <i className="fa fa-times"></i>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-      <div className="search__results"></div>
-      <div className=""></div>
-      <div className=""></div>
+      <div className="search__results">
+        {productsFound.list &&
+          (productsFound.list.length === 0 ? (
+            <div className="search__noresults">
+              No results found for the requested value.
+            </div>
+          ) : (
+            productsFound.list.map((prod, index) => {
+              return (
+                <ProductCard
+                  key={index}
+                  product={prod}
+                  reviews={3.5}
+                  onAddToCartClick={handleAddToCart}
+                  onDetailsClick={handleProductDetail}
+                />
+              );
+            })
+          ))}
+      </div>
     </div>
   );
 };

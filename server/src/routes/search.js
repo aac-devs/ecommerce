@@ -2,7 +2,7 @@ const server = require("express").Router();
 const { Product, Image } = require("../config/db.js");
 
 // Ruta: http://localhost:5001/search?query={valor} - GET
-server.get("/", async (req, res, next) => {
+server.get("/", async (req, res) => {
   const value = req.query.query.toLowerCase();
   try {
     const products = await Product.findAll({
@@ -36,7 +36,7 @@ server.get("/", async (req, res, next) => {
       });
     }
   } catch (err) {
-    next(err.message);
+    res.status(500).send(err.message);
   }
 });
 

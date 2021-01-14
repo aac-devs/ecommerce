@@ -79,7 +79,7 @@ function App() {
             // onImageClick={handled}
           />
         ) : null} */}
-        {allowRender ? <SearchBar /> : null} REDUX-RENDER-ORG
+        {allowRender ? <SearchBar /> : null}
       </div>
       <div className="footer">mifooter</div>
     </>
