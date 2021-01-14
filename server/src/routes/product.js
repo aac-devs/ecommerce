@@ -202,7 +202,7 @@ server.put("/:id", async (req, res) => {
   }
 });
 
-// TASK S27.
+// Ruta: http://localhost:5000/products/:id - DELETE
 server.delete("/:id", async (req, res) => {
   try {
     // Eliminar las imágenes relacionadas con el producto:
@@ -228,7 +228,7 @@ server.delete("/:id", async (req, res) => {
   }
 });
 
-// TASK S24.
+// Ruta: http://localhost:5000/products/:id -  GET
 server.get("/:id", async (req, res) => {
   try {
     // Se busca el producto que coincida con el id ingresado en la tabla Product y se les agregan las imágenes y las categorías asociadas.
@@ -297,7 +297,7 @@ server.post("/:idProduct/category/:idCategory", async (req, res) => {
   }
 });
 
-// TASK S17.
+// Ruta: /products/:idProduct/category/:idCategory - DELETE
 server.delete("/:idProduct/category/:idCategory", async (req, res) => {
   const { idProduct, idCategory } = req.params;
   try {
