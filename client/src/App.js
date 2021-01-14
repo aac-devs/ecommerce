@@ -7,6 +7,7 @@ import Carousel from "./components/carousel/Carousel";
 import Product from "./product";
 import ProductCard from "./catalogue/product_card";
 import SearchBar from "./search_bar";
+import CategoryCrud from "./category_crud";
 
 let countApp = 0;
 
@@ -79,7 +80,8 @@ function App() {
             // onImageClick={handled}
           />
         ) : null} */}
-        {allowRender ? <SearchBar /> : null}
+        {/* {allowRender ? <SearchBar /> : null} */}
+        {allowRender ? <CategoryCrud /> : null}
       </div>
       <div className="footer">mifooter</div>
     </>

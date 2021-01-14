@@ -7,9 +7,9 @@ import {
 } from "./reducers/productReducers";
 import {
   categoryListReducer,
-  // categoryUpdateReducer,
-  // categoryCreateReducer,
-  // categoryDeleteReducer,
+  categoryUpdateReducer,
+  categoryCreateReducer,
+  categoryDeleteReducer,
   // categoryModalState,
 } from "./reducers/categoryReducers";
 // import { imagesListReducer } from "./reducers/imagesReducers";
@@ -39,9 +39,9 @@ const reducers = combineReducers({
 
   // Reducers relacionados con Category:
   categoryList: categoryListReducer,
-  // categoryUpdate: categoryUpdateReducer,
-  // categoryCreate: categoryCreateReducer,
-  // categoryDelete: categoryDeleteReducer,
+  categoryUpdate: categoryUpdateReducer,
+  categoryCreate: categoryCreateReducer,
+  categoryDelete: categoryDeleteReducer,
   // categoryModalState: categoryModalState,
 
   // imagesList: imagesListReducer,

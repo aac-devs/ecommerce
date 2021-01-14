@@ -1,11 +1,12 @@
 :root {
   --column-width: var(--min-device-screen);
+  --max-container: var(--max-container-width);
 }
 
 .catalogue {
   margin: 0 auto;
   background-color: white;
-  max-width: 1260px;
+  max-width: var(--max-container);
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

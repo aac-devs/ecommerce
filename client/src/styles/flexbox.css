@@ -1,0 +1,18 @@
+/* display - direction - justify - align */
+
+.flex-col-cen-str {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.flex-row-cen-str {
+}
+
+.flex-row-bet-cen{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}

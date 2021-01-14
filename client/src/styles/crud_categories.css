@@ -1,0 +1,28 @@
+:root {
+  --max-container: var(--max-container-width);
+}
+
+.crudcategory {
+  max-width: var(--max-container);
+  background: plum;
+  margin: 0 auto;
+  /* position: relative; */
+}
+
+.crudcategory__header {
+  /* background-color: antiquewhite; */
+  padding-left: 2rem;
+}
+
+.crudcategory__title {
+  /* background: cyan; */
+  flex-grow: 1;
+}
+
+.crudcategory__addbutton {
+  background-color: #f7cb06;
+  /* background-image: url(/assets/images/add.png); */
+}
+
+button {
+}

@@ -31,57 +31,57 @@ export const listCategories = () => async (dispatch) => {
   }
 };
 
-// export const updateCategory = (category) => async (dispatch) => {
-//   dispatch({
-//     type: CATEGORY_UPDATE_REQUEST,
-//   });
-//   try {
-//     const { id, name, description } = category;
-//     const { data } = await Axios.put(
-//       `http://localhost:5001/products/category/${id}`,
-//       {
-//         name,
-//         description,
-//       }
-//     );
-//     dispatch({ type: CATEGORY_UPDATE_SUCCESS, payload: data });
-//   } catch (error) {
-//     dispatch({ type: CATEGORY_UPDATE_FAIL, payload: error.message });
-//   }
-// };
+export const updateCategory = (category) => async (dispatch) => {
+  dispatch({
+    type: CATEGORY_UPDATE_REQUEST,
+  });
+  try {
+    const { id, name, description } = category;
+    const { data } = await Axios.put(
+      `http://localhost:5000/products/category/${id}`,
+      {
+        name,
+        description,
+      }
+    );
+    dispatch({ type: CATEGORY_UPDATE_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: CATEGORY_UPDATE_FAIL, payload: error.message });
+  }
+};
 
-// export const createCategory = (category) => async (dispatch) => {
-//   dispatch({
-//     type: CATEGORY_CREATE_REQUEST,
-//   });
-//   try {
-//     const { name, description } = category;
-//     const { data } = await Axios.post(
-//       `http://localhost:5001/products/category/`,
-//       {
-//         name,
-//         description,
-//       }
-//     );
-//     dispatch({ type: CATEGORY_CREATE_SUCCESS, payload: data });
-//   } catch (error) {
-//     dispatch({ type: CATEGORY_CREATE_FAIL, payload: error.message });
-//   }
-// };
+export const createCategory = (category) => async (dispatch) => {
+  dispatch({
+    type: CATEGORY_CREATE_REQUEST,
+  });
+  try {
+    const { name, description } = category;
+    const { data } = await Axios.post(
+      `http://localhost:5000/products/category/`,
+      {
+        name,
+        description,
+      }
+    );
+    dispatch({ type: CATEGORY_CREATE_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: CATEGORY_CREATE_FAIL, payload: error.message });
+  }
+};
 
-// export const deleteCategory = (id) => async (dispatch) => {
-//   dispatch({
-//     type: CATEGORY_DELETE_REQUEST,
-//   });
-//   try {
-//     const { data } = await Axios.delete(
-//       `http://localhost:5001/products/category/${id}`
-//     );
-//     dispatch({ type: CATEGORY_DELETE_SUCCESS, payload: data });
-//   } catch (error) {
-//     dispatch({ type: CATEGORY_DELETE_FAIL, payload: error.message });
-//   }
-// };
+export const deleteCategory = (id) => async (dispatch) => {
+  dispatch({
+    type: CATEGORY_DELETE_REQUEST,
+  });
+  try {
+    const { data } = await Axios.delete(
+      `http://localhost:5000/products/category/${id}`
+    );
+    dispatch({ type: CATEGORY_DELETE_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: CATEGORY_DELETE_FAIL, payload: error.message });
+  }
+};
 
 // export const changeModalState = (modal, state) => async (dispatch) => {
 //   if (modal === "edit") {

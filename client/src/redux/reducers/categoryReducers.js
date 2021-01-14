@@ -33,46 +33,46 @@ export const categoryListReducer = (
   }
 };
 
-// export const categoryUpdateReducer = (state = {}, action) => {
-//   // console.log("Estoy en categoryUpdateReducer");
-//   switch (action.type) {
-//     case CATEGORY_UPDATE_REQUEST:
-//       return { loading: true };
-//     case CATEGORY_UPDATE_SUCCESS:
-//       return { loading: false, success: true };
-//     case CATEGORY_UPDATE_FAIL:
-//       return { loading: false, error: action.payload };
-//     default:
-//       return state;
-//   }
-// };
+export const categoryUpdateReducer = (state = {}, action) => {
+  // console.log("Estoy en categoryUpdateReducer");
+  switch (action.type) {
+    case CATEGORY_UPDATE_REQUEST:
+      return { loading: true };
+    case CATEGORY_UPDATE_SUCCESS:
+      return { loading: false, success: true };
+    case CATEGORY_UPDATE_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
 
-// export const categoryCreateReducer = (state = {}, action) => {
-//   // console.log("Estoy en categoryCreateReducer");
-//   switch (action.type) {
-//     case CATEGORY_CREATE_REQUEST:
-//       return { loading: true };
-//     case CATEGORY_CREATE_SUCCESS:
-//       return { loading: false, success: true };
-//     case CATEGORY_CREATE_FAIL:
-//       return { loading: false, error: action.payload };
-//     default:
-//       return state;
-//   }
-// };
+export const categoryCreateReducer = (state = {}, action) => {
+  // console.log("Estoy en categoryCreateReducer");
+  switch (action.type) {
+    case CATEGORY_CREATE_REQUEST:
+      return { loading: true };
+    case CATEGORY_CREATE_SUCCESS:
+      return { loading: false, success: true };
+    case CATEGORY_CREATE_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
 
-// export const categoryDeleteReducer = (state = {}, action) => {
-//   switch (action.type) {
-//     case CATEGORY_DELETE_REQUEST:
-//       return { loading: true };
-//     case CATEGORY_DELETE_SUCCESS:
-//       return { loading: false, success: true };
-//     case CATEGORY_DELETE_FAIL:
-//       return { loading: false, error: action.payload };
-//     default:
-//       return state;
-//   }
-// };
+export const categoryDeleteReducer = (state = {}, action) => {
+  switch (action.type) {
+    case CATEGORY_DELETE_REQUEST:
+      return { loading: true };
+    case CATEGORY_DELETE_SUCCESS:
+      return { loading: false, success: true };
+    case CATEGORY_DELETE_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
 
 // // Maneja el estado de los Modals Edit y Add del CRUD de Categorías:
 // const initialModalState = {

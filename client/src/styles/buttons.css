@@ -1,0 +1,20 @@
+.button__square {
+  background: white;
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-position: center;
+  outline-color: dodgerblue;
+  outline-offset: 0.2rem;
+  margin: 0 0.4rem;
+  border: none;
+  height: 4.8rem;
+  width: 4.8rem;
+  border-radius: 0.5rem;
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+
+.button__square:hover {
+  transform: scale(1.1);
+}
