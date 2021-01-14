@@ -25,7 +25,14 @@
   display: inline;
 }
 
+.text__label {
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding-right: 0.5rem;
+}
+
 .text__paragraph {
+  font-size: 1.5rem;
 }
 
 .text__paragraph--ligth {

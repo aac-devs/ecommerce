@@ -67,7 +67,9 @@ function App() {
             onDetailsClick={handDetail}
           />
         ) : null} */}
-        {allowRender ? <Product product={products.list.data[1]} /> : null}
+        {allowRender ? (
+          <Product product={products.list.data[9]} reviews={3.5} />
+        ) : null}
         {/* {allowRender ? (
           <Carousel
             data={products.list.data[2].images}
