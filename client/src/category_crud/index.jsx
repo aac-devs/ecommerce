@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteCategory,
   listCategories,
 } from "../redux/actions/categoryActions";
+import ModalAdd from "./modals/ModalAdd";
+import CategoryTableCrud from "./table";
 
 let countCategoryCrud = 0;
 
@@ -54,46 +57,49 @@ const CategoryCrud = () => {
   console.log("Updated:", updated);
   console.log("Created:", created);
   console.log("Deleted:", deleted);
-  console.log(categories.list);
+  console.log(categories.list.data);
 
   const handleTableActions = (e) => {
     const { id, name } = e.target;
     if (name === "edit") {
-      setCategorySelected(id);
+      // setCategorySelected(id);
       // dispatch(changeModalState("edit", true));
+      console.log("Editar categoría", id);
     } else {
-      dispatch(deleteCategory(id));
+      // dispatch(deleteCategory(id));
       // dispatch(changeModalState("refresh", true));
-      console.log("Eliminar categoría");
+      console.log("Eliminar categoría", id);
     }
   };
 
   const handleAddAction = (e) => {
-    console.log("Estoy en handleAddAction");
+    console.log("Estoy en handleAddAction", e.target.name);
     // dispatch(changeModalState("add", true));
+    console.log(e.target.name);
+    console.log(e.target.id);
+
+    ReactDOM.render(
+      <ModalAdd></ModalAdd>,
+
+      document.getElementById("modals")
+    );
   };
 
   return (
-    <div className="crudcategory flex-col-cen-str">
-      <div className="crudcategory__header flex-row-bet-cen">
-        <div className="crudcategory__title">
-          <h1 className="text__title">categories</h1>
-          <div className="test"></div>
-          <h1 className="hache1 h1-uppercase h1-space h1-inline">categories</h1>
-          <div className="test"></div>
-          <h2 className="hache2 h2">categories</h2>
-          <h3 className="hache3">categories</h3>
-          <h4 className="hache4">categories</h4>
-          <h5 className="hache5">categories</h5>
-          <h6 className="hache6">categories</h6>
-          <p className="parag">
-            Este es el contenido de un parrafo con muchas lineas de texto
-          </p>
-        </div>
-        {/* <button className="crudcategory__addbutton button__square"></button> */}
+    <div className="crud-category flex-col-cen-str">
+      <div className="crud-category__header flex-row-between-center">
+        <h1 className="crud-category__title">categories</h1>
+        <button
+          className="crud-category__button-add button__square"
+          name="add"
+          onClick={handleAddAction}
+        ></button>
       </div>
-      <div className="crudcategory__body">
-        aquí va la tabla de crud category
+      <div className="crud-category__body">
+        <CategoryTableCrud
+          data={categories.list.data}
+          handleActions={handleTableActions}
+        />
       </div>
     </div>
   );
