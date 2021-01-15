@@ -11,6 +11,4 @@
   /* Usado para mantener uniformidad en el ancho de los componentes cuando la pantalla del dispositivo sea de 320px, que es el valor mínimo definido para dispositivos: */
   --min-device-screen: 30rem;
   --max-container-width: 1260px;
-
-  
 }

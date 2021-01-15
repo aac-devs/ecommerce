@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import ProductCard from "./product_card";
+import ProductCard from "./product_card/";
 
 let countCatalogue = 0;
 
@@ -77,9 +77,9 @@ const Catalogue = () => {
   };
 
   return (
-    <div className="catalogue">
-      <aside className="catalogue__categories">
-        <h1 className="text__title text__title--light">categories</h1>
+    <div className="catalogue flex-row-start-start">
+      <aside className="catalogue__categories flex-column-center-center">
+        <h2>categories</h2>
         <div className="catalogue__list">
           {categoriesWithStatus.map((item, index) => (
             <div className="catalogue__item" key={index}>
@@ -92,22 +92,20 @@ const Catalogue = () => {
                 onChange={handleClick}
               ></input>
               <label className="catalogue__label" htmlFor={item.id}>
-                <h1 className="text__subtitle text__subtitle--inline  text__subtitle--light">
-                  {item.name}
-                </h1>
+                <h3>{item.name}</h3>
               </label>
             </div>
           ))}
         </div>
         <button
           type="button"
-          className="global__button global__button--light"
+          className="button button--light"
           onClick={handleButton}
         >
           browse all
         </button>
       </aside>
-      <div className="catalogue__products">
+      <div className="catalogue__products flex-row-evenly-stretch">
         {products.list.data.map((prod, index) => {
           if (browseAll) {
             return (

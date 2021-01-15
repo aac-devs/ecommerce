@@ -57,12 +57,12 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="search">
+    <div className="search flex-column-start-center">
       <div>
         <IdleTimer ref={idleTimerRef} timeout={500} onIdle={onIdle}></IdleTimer>
       </div>
       <div className="search__container">
-        <div className="search__window">
+        <div className="search__window flex-row-center-center">
           <input
             className="search__input"
             type="text"
@@ -73,20 +73,23 @@ const SearchBar = () => {
             onChange={handleChange}
             value={value}
           ></input>
-          <div className="search__buttons">
+          <div className="search__buttons flex-row-center-center">
             {button ? (
-              <div className="search__button">
+              <button className="search__button flex-row-center-center">
                 <i className="fa fa-search"></i>
-              </div>
+              </button>
             ) : (
-              <div className="search__button" onClick={handleXButton}>
+              <button
+                className="search__button flex-row-center-center"
+                onClick={handleXButton}
+              >
                 <i className="fa fa-times"></i>
-              </div>
+              </button>
             )}
           </div>
         </div>
       </div>
-      <div className="search__results">
+      <div className="search__results flex-row-evenly-start">
         {productsFound.list &&
           (productsFound.list.length === 0 ? (
             <div className="search__noresults">

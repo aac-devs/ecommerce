@@ -1,16 +1,72 @@
 /* display - direction - justify - align */
 
-.flex-col-cen-str {
+/* Column: */
+
+.flex-column-center-stretch {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
 }
 
-.flex-row-cen-str {
+.flex-column-center-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.flex-row-bet-cen{
+.flex-column-start-stretch {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.flex-column-start-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* Row: */
+
+.flex-row-center-stretch {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.flex-row-center-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-row-start-start {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.flex-row-evenly-stretch {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: stretch;
+}
+.flex-row-evenly-start {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: start;
+}
+
+.flex-row-between-center {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

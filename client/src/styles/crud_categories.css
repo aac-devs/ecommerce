@@ -10,8 +10,8 @@
 }
 
 .crudcategory__header {
-  /* background-color: antiquewhite; */
-  padding-left: 2rem;
+  background-color: antiquewhite;
+  /* padding-left: 2rem; */
 }
 
 .crudcategory__title {
@@ -20,9 +20,42 @@
 }
 
 .crudcategory__addbutton {
+  background: url(../button_images/add.png);
   background-color: #f7cb06;
-  /* background-image: url(/assets/images/add.png); */
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-button {
+.hache1 {
+  /* display: inline; */
+  background-color: gold;
+}
+.hache2 {
+  /* display: inline; */
+  background-color: sienna;
+}
+.hache3 {
+  /* display: inline; */
+  background-color: mediumturquoise;
+}
+.hache4 {
+  /* display: inline; */
+  background-color: mediumpurple;
+}
+.hache5 {
+  /* display: inline; */
+  background-color: wheat;
+}
+.hache6 {
+  /* display: inline; */
+  background-color: lightgreen;
+}
+.parag {
+  background-color: deepskyblue;
+}
+
+.test {
+  border: 1px solid black;
+  height: 1rem;
 }

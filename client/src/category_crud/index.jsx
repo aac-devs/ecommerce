@@ -78,16 +78,19 @@ const CategoryCrud = () => {
       <div className="crudcategory__header flex-row-bet-cen">
         <div className="crudcategory__title">
           <h1 className="text__title">categories</h1>
+          <div className="test"></div>
+          <h1 className="hache1 h1-uppercase h1-space h1-inline">categories</h1>
+          <div className="test"></div>
+          <h2 className="hache2 h2">categories</h2>
+          <h3 className="hache3">categories</h3>
+          <h4 className="hache4">categories</h4>
+          <h5 className="hache5">categories</h5>
+          <h6 className="hache6">categories</h6>
+          <p className="parag">
+            Este es el contenido de un parrafo con muchas lineas de texto
+          </p>
         </div>
-        <button
-          style={{
-            backgroundImage: `url(/assets/images/add.png)`,
-            backgroundColor: "#f7cb06",
-          }}
-          className="button__square crudcategory__addbutton"
-        >
-          {/* <i className="fa fa-plus"></i> */}
-        </button>
+        {/* <button className="crudcategory__addbutton button__square"></button> */}
       </div>
       <div className="crudcategory__body">
         aquí va la tabla de crud category

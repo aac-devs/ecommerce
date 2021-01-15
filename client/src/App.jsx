@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "./redux/actions/productActions";
 import { listCategories } from "./redux/actions/categoryActions";
-import Catalogue from "./catalogue";
+// import Catalogue from "./catalogue";
 import Carousel from "./components/carousel/Carousel";
 import Product from "./product";
-import ProductCard from "./catalogue/product_card";
+import ProductCard from "./catalogue/product_card/";
 import SearchBar from "./search_bar";
 import CategoryCrud from "./category_crud";
+import Catalogue from "./catalogue";
 
 let countApp = 0;
 
@@ -69,9 +70,9 @@ function App() {
             onDetailsClick={handDetail}
           />
         ) : null} */}
-        {/* {allowRender ? (
-          <Product product={products.list.data[9]} reviews={3.5} />
-        ) : null} */}
+          {/* {allowRender ? (
+            <Product product={products.list.data[9]} reviews={3.5} />
+          ) : null} */}
         {/* {allowRender ? (
           <Carousel
             data={products.list.data[2].images}

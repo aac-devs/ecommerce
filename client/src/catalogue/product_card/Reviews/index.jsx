@@ -19,7 +19,7 @@ const Reviews = ({ qualification, num }) => {
         <span key={index}>{star} </span>
       ))}
       <span>
-        <h1 className="text__thumb">{num} reviews</h1>
+        <h5 className="text__thumb">{num} reviews</h5>
       </span>
     </>
   );

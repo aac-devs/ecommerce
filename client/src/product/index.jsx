@@ -32,8 +32,8 @@ const Product = ({ product, reviews }) => {
   };
 
   return (
-    <div className="product">
-      <div className="product__images">
+    <div className="product flex-row-center-stretch">
+      <div className="product__images flex-column-center-center">
         <div className="product__main-image"></div>
         <div className="product__thumb-images">
           <Carousel
@@ -44,43 +44,43 @@ const Product = ({ product, reviews }) => {
           />
         </div>
       </div>
-      <div className="product__details">
-        <div className="product__name text__title">{product.name}</div>
+      <div className="product__details flex-column-start-stretch">
+        <h2 className="product__name">{product.name}</h2>
         <div className="product__description product__line">
-          <span className="text__paragraph">{product.description}</span>
+          <h3>{product.description}</h3>
         </div>
         <div className="product__line">
-          <span className="text__label">Brand:</span>
-          <span className="text__paragraph">{product.brand}</span>
+          <h4>Brand:</h4>
+          <p>{product.brand}</p>
         </div>
         <div className="product__line">
-          <span className="text__label">Origin:</span>
-          <span className="text__paragraph">{product.origin}</span>
+          <h4>Origin:</h4>
+          <p>{product.origin}</p>
         </div>
         <div className="product__line">
-          <span className="text__label">Condition:</span>
-          <span className="text__paragraph">{product.condition}</span>
+          <h4>Condition:</h4>
+          <p>{product.condition}</p>
         </div>
         <div className="product__line">
-          <span className="text__label">Price:</span>
-          <span className="text__paragraph">
+          <h4>Price:</h4>
+          <p>
             $ {product.price.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, "$&,")}
-          </span>
+          </p>
         </div>
         <div className="product__line">
-          <span className="text__label">Stock:</span>
-          <span className="text__paragraph">{product.stock}</span>
+          <h4>Stock:</h4>
+          <p>{product.stock}</p>
         </div>
         <div className="product__filler"></div>
         <div className="product__reviews">
           <Reviews qualification={reviews} num={48} />
         </div>
-        <div
-          className="product__button global__button global__button--light"
+        <button
+          className="product__button button button--light"
           onClick={handleAddToCart}
         >
           add to cart
-        </div>
+        </button>
       </div>
     </div>
   );
