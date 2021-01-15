@@ -1,9 +1,9 @@
 :root {
   --size-body-modal: 100%;
-  --z-index: -10;
+  --z-index: 100;
 }
 
-#modals {
+#modal {
   position: absolute;
   top: 0;
   left: 0;
@@ -18,16 +18,98 @@
 }
 
 .modal-add {
-  /* z-index: var(--z-index); */
-  background-color: wheat;
-  border-radius: 1rem;
-  height: 500px;
-  width: 500px;
-  /* z-index: 1000; */
-  /* margin: auto; */
-  /* opacity: 1; */
-  /* background-color: gray;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
   position: absolute;
   top: 0;
-  left: 0; */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* background-color: rgba(f7, cb, 6, 0.5); */
+}
+
+.modal-add__container {
+  /* background: antiquewhite; */
+  background: #f7cb06;
+  width: 400px;
+  /* height: 500px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.modal-add__title {
+  text-align: center;
+}
+
+.modal-add__label {
+  /* display: block; */
+  /* align-self: stretch; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* background: pink; */
+  /* margin-bottom: 1rem; */
+  margin: 0.7rem 0;
+}
+
+.modal-add__input {
+  width: 25rem;
+  height: 3rem;
+  font-size: 1.8rem;
+  font-family: "Quicksand", sans-serif, Helvetica, Arial;
+  padding: 0 0.5rem;
+}
+
+.modal-add__textarea {
+  width: 25rem;
+  height: 9rem;
+  font-size: 1.8rem;
+  font-family: "Quicksand", sans-serif, Helvetica, Arial;
+  padding: 0 0.5rem;
+  resize: none;
+}
+
+.modal-add__buttons {
+  /* background-color: palevioletred; */
+  text-align: right;
+  margin-top: 1rem;
+}
+
+.modal-add__acept {
+  background: url(../button_images/acept.png);
+  background-color: green;
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.modal-add__cancel {
+  background: url(../button_images/cancel.png);
+  background-color: red;
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.modal-template {
+  /* background-color: yellow; */
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.test {
+  background-color: pink;
 }

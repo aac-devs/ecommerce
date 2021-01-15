@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
+
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteCategory,
   listCategories,
 } from "../redux/actions/categoryActions";
-import ModalAdd from "./modals/ModalAdd";
+import ModalCategoryAdd from "./modals/ModalCategoryAdd";
+import ModalAdd, {
+  destroy_modal,
+  render_modal,
+} from "./modals/ModalCategoryAdd";
 import CategoryTableCrud from "./table";
 
 let countCategoryCrud = 0;
@@ -18,6 +22,9 @@ const CategoryCrud = () => {
   const created = useSelector((state) => state.categoryCreate);
   const deleted = useSelector((state) => state.categoryDelete);
   const [categorySelected, setCategorySelected] = useState(-1);
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  // const [modalData, setModalData] = useState({});
 
   // useEffect(() => {
   //   console.log("UseEffect del CategoryCrud Updated");
@@ -72,17 +79,35 @@ const CategoryCrud = () => {
     }
   };
 
+  const handleCloseModal = (value) => {
+    console.log("Principal Close");
+    console.log("value", value.name);
+    console.log("value", value.description);
+
+    setModalIsOpen(false);
+  };
+
   const handleAddAction = (e) => {
-    console.log("Estoy en handleAddAction", e.target.name);
-    // dispatch(changeModalState("add", true));
-    console.log(e.target.name);
-    console.log(e.target.id);
+    console.log("Principal Open");
 
-    ReactDOM.render(
-      <ModalAdd></ModalAdd>,
+    const modal_data = {};
 
-      document.getElementById("modals")
-    );
+    modal_data.id = "";
+    modal_data.title = "Add category";
+    modal_data.items = [];
+    modal_data.items.push({
+      label: "name",
+      type: "text",
+      value: "",
+    });
+    modal_data.items.push({
+      label: "description",
+      type: "textarea",
+      value: "",
+    });
+
+    // setModalData(modal_data);
+    setModalIsOpen(true);
   };
 
   return (
@@ -101,6 +126,9 @@ const CategoryCrud = () => {
           handleActions={handleTableActions}
         />
       </div>
+      {modalIsOpen ? (
+        <ModalCategoryAdd onCloseModal={handleCloseModal} />
+      ) : null}
     </div>
   );
 };
