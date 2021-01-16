@@ -12,8 +12,8 @@ import {
   CATEGORY_DELETE_REQUEST,
   CATEGORY_DELETE_SUCCESS,
   CATEGORY_DELETE_FAIL,
-  EDIT_MODAL_STATE,
-  ADD_MODAL_STATE,
+  EDIT_CATEGORY_FETCH_STATE,
+  ADD_CATEGORY_FETCH_STATE,
   REFRESH_LIST_CATEGORIES,
 } from "../constants/categoryConstants";
 
@@ -82,22 +82,3 @@ export const deleteCategory = (id) => async (dispatch) => {
     dispatch({ type: CATEGORY_DELETE_FAIL, payload: error.message });
   }
 };
-
-// export const changeModalState = (modal, state) => async (dispatch) => {
-//   if (modal === "edit") {
-//     dispatch({
-//       type: EDIT_MODAL_STATE,
-//       payload: state,
-//     });
-//   } else if (modal === "add") {
-//     dispatch({
-//       type: ADD_MODAL_STATE,
-//       payload: state,
-//     });
-//   } else if (modal === "refresh") {
-//     dispatch({
-//       type: REFRESH_LIST_CATEGORIES,
-//       payload: state,
-//     });
-//   }
-// };

@@ -1,11 +1,11 @@
 @import "./variables.css";
-@import "./flexbox.css";
+@import "./flex.css";
 @import "./global.css";
-@import "./buttons.css";
+@import "./button.css";
 @import "./text.css";
-@import "./product_card.css";
+@import "./card.css";
 @import "./catalogue.css";
 @import "./product.css";
-@import "./search_bar.css";
-@import "./crud_categories.css";
-@import "./crud_categories_modal_add.css";
+@import "./search.css";
+@import "./crud_category.css";
+@import "./modal_cat.css";

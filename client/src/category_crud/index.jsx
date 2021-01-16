@@ -1,113 +1,76 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
+  createCategory,
   deleteCategory,
-  listCategories,
+  updateCategory,
 } from "../redux/actions/categoryActions";
-import ModalCategoryAdd from "./modals/ModalCategoryAdd";
-import ModalAdd, {
-  destroy_modal,
-  render_modal,
-} from "./modals/ModalCategoryAdd";
+import ModalCategory from "./modal/ModalCategory";
 import CategoryTableCrud from "./table";
 
 let countCategoryCrud = 0;
 
 const CategoryCrud = () => {
   const dispatch = useDispatch();
-  // const stateModal = useSelector((state) => state.categoryModalState);
-  const categories = useSelector((state) => state.categoryList);
-  const updated = useSelector((state) => state.categoryUpdate);
-  const created = useSelector((state) => state.categoryCreate);
-  const deleted = useSelector((state) => state.categoryDelete);
-  const [categorySelected, setCategorySelected] = useState(-1);
+  const categories = useSelector((state) => state.categoryData);
+  const [categoryToModal, setCategoryToModal] = useState({
+    type: "add",
+    action: "",
+    id: "",
+    name: "",
+    description: "",
+  });
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  // const [modalData, setModalData] = useState({});
-
-  // useEffect(() => {
-  //   console.log("UseEffect del CategoryCrud Updated");
-  //   if (stateModal.refresh && updated.success) {
-  //     console.log("Se debe refrescar la lista");
-  //     // dispatch(changeModalState("refresh", false));
-  //     dispatch(listCategories());
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [updated.success]);
-
-  // useEffect(() => {
-  //   console.log("UseEffect del CategoryCrud Created");
-  //   if (stateModal.refresh && created.success) {
-  //     console.log("Se debe refrescar la lista");
-  //     // dispatch(changeModalState("refresh", false));
-  //     dispatch(listCategories());
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [created.success]);
-
-  // useEffect(() => {
-  //   console.log("UseEffect del CategoryCrud Deleted");
-  //   if (stateModal.refresh && deleted.success) {
-  //     console.log("Se debe refrescar la lista");
-  //     // dispatch(changeModalState("refresh", false));
-  //     dispatch(listCategories());
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [deleted.success]);
+  const [modalIsOpen, setModalIsOpen] = useState({ add: false, edit: false });
 
   console.log("-----------------");
   console.log("Renderiza category crud", countCategoryCrud);
   countCategoryCrud++;
 
-  // console.log("StateModal:", stateModal);
-  console.log("Updated:", updated);
-  console.log("Created:", created);
-  console.log("Deleted:", deleted);
   console.log(categories.list.data);
 
   const handleTableActions = (e) => {
     const { id, name } = e.target;
     if (name === "edit") {
-      // setCategorySelected(id);
-      // dispatch(changeModalState("edit", true));
-      console.log("Editar categoría", id);
+      const data = categories.list.data.filter(
+        (item) => id.toString() === item.id.toString()
+      )[0];
+      setCategoryToModal({
+        type: "edit",
+        action: "",
+        id,
+        name: data.name,
+        description: data.description,
+      });
+      setModalIsOpen({ ...modalIsOpen, edit: true });
     } else {
-      // dispatch(deleteCategory(id));
-      // dispatch(changeModalState("refresh", true));
-      console.log("Eliminar categoría", id);
+      dispatch(deleteCategory(id));
     }
   };
 
   const handleCloseModal = (value) => {
-    console.log("Principal Close");
-    console.log("value", value.name);
-    console.log("value", value.description);
-
-    setModalIsOpen(false);
+    setModalIsOpen({ add: false, edit: false });
+    if (value.action === "acept") {
+      if (value.type === "add") {
+        dispatch(createCategory(value));
+      } else {
+        dispatch(updateCategory(value));
+      }
+    } else {
+      console.log("Acción Cancelada");
+    }
   };
 
   const handleAddAction = (e) => {
-    console.log("Principal Open");
-
-    const modal_data = {};
-
-    modal_data.id = "";
-    modal_data.title = "Add category";
-    modal_data.items = [];
-    modal_data.items.push({
-      label: "name",
-      type: "text",
-      value: "",
+    setCategoryToModal({
+      type: "add",
+      action: "",
+      id: "",
+      name: "",
+      description: "",
     });
-    modal_data.items.push({
-      label: "description",
-      type: "textarea",
-      value: "",
-    });
-
-    // setModalData(modal_data);
-    setModalIsOpen(true);
+    setModalIsOpen({ ...modalIsOpen, add: true });
   };
 
   return (
@@ -126,8 +89,11 @@ const CategoryCrud = () => {
           handleActions={handleTableActions}
         />
       </div>
-      {modalIsOpen ? (
-        <ModalCategoryAdd onCloseModal={handleCloseModal} />
+      {modalIsOpen.add ? (
+        <ModalCategory data={categoryToModal} onCloseModal={handleCloseModal} />
+      ) : null}
+      {modalIsOpen.edit ? (
+        <ModalCategory data={categoryToModal} onCloseModal={handleCloseModal} />
       ) : null}
     </div>
   );

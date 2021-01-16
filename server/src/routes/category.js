@@ -39,14 +39,16 @@ server.post("/", async (req, res) => {
         );
       }
       // Si no se encuentra creada, la crea.
-      const categoryCreated = await Category.create({
+      await Category.create({
         name,
         description,
       });
-      // Mensaje de respuesta.
+      // Lee todas la categorías (incluyendo la nueva) para enviarlas como respuesta.
+      const listCategories = await Category.findAll();
+
       res.json({
         message: "the category has been created successfully.",
-        data: categoryCreated,
+        data: listCategories,
       });
     } catch (err) {
       res.status(500).send(err.message);
@@ -72,14 +74,16 @@ server.put("/:id", async (req, res) => {
       // Obtener la categoría que se desea actualizar:
       const categoryToUpdate = await Category.findByPk(req.params.id);
       // Actulizar la categoría con los nuevos datos:
-      const categoryUpdated = await categoryToUpdate.update({
+      await categoryToUpdate.update({
         name,
         description,
       });
+      // Lee todas la categorías (incluyendo la modificada) para enviarlas como respuesta.
+      const listCategories = await Category.findAll();
       // Mensaje de respuesta.
       res.json({
         message: "the category has been updated successfully.",
-        data: categoryUpdated,
+        data: listCategories,
       });
     } catch (err) {
       res.status(500).send(err.message);
@@ -100,8 +104,13 @@ server.delete("/:id", async (req, res) => {
     if (!response) {
       throw new Error("the category you want to delete does not exist.");
     }
+    // Lee todas la categorías que aún quedan para enviarlas como respuesta.
+    const listCategories = await Category.findAll();
     // Mensaje de respuesta:
-    res.json({ message: "category deleted successfully." });
+    res.json({
+      message: "category deleted successfully.",
+      data: listCategories,
+    });
   } catch (err) {
     res.status(500).send(err.message);
   }

@@ -15,7 +15,7 @@ let countApp = 0;
 function App() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.productList);
-  const categories = useSelector((state) => state.categoryList);
+  const categories = useSelector((state) => state.categoryData);
 
   if (countApp === 0) {
     console.clear();
@@ -70,7 +70,7 @@ function App() {
             onDetailsClick={handDetail}
           />
         ) : null} */}
-          {/* {allowRender ? (
+        {/* {allowRender ? (
             <Product product={products.list.data[9]} reviews={3.5} />
           ) : null} */}
         {/* {allowRender ? (

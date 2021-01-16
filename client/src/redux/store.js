@@ -6,11 +6,12 @@ import {
   productSearchReducer,
 } from "./reducers/productReducers";
 import {
-  categoryListReducer,
-  categoryUpdateReducer,
-  categoryCreateReducer,
-  categoryDeleteReducer,
-  // categoryModalState,
+  categoryReducer,
+  // categoryListReducer,
+  // categoryUpdateReducer,
+  // categoryCreateReducer,
+  // categoryDeleteReducer,
+  // categoryFetchState,
 } from "./reducers/categoryReducers";
 // import { imagesListReducer } from "./reducers/imagesReducers";
 
@@ -38,11 +39,11 @@ const reducers = combineReducers({
   productSearch: productSearchReducer,
 
   // Reducers relacionados con Category:
-  categoryList: categoryListReducer,
-  categoryUpdate: categoryUpdateReducer,
-  categoryCreate: categoryCreateReducer,
-  categoryDelete: categoryDeleteReducer,
-  // categoryModalState: categoryModalState,
+  categoryData: categoryReducer,
+  // categoryUpdate: categoryUpdateReducer,
+  // categoryCreate: categoryCreateReducer,
+  // categoryDelete: categoryDeleteReducer,
+  // categoryFetchState: categoryFetchState,
 
   // imagesList: imagesListReducer,
   // productDetails: productDetailsReducer,

@@ -34,22 +34,6 @@ const CategoryTableCrud = ({ data, handleActions }) => {
               </td>
             ))}
             {/* Botones para la columna Actions: */}
-            {/* <TableCell style={{ textAlign: "center" }}>
-              <TableBtnGroup>
-                <Button
-                  id={item.id}
-                  name="edit"
-                  tooltip={`edit category #${item.id}`}
-                  onClick={handleActions}
-                />
-                <Button
-                  id={item.id}
-                  name="delete"
-                  tooltip={`delete category #${item.id}`}
-                  onClick={handleActions}
-                />
-              </TableBtnGroup>
-            </TableCell> */}
             <td className="crud-category__td">
               <div className="crud-category__btn-group flex-row-center-center">
                 <button
